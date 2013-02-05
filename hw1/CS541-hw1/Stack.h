@@ -4,7 +4,7 @@ class Stack
 {
 private:
 	char stack[STACK_CAPACITY];
-	int getSize();
+	int size;
 public:
 
 	Stack(); // constructor for a stack
@@ -15,15 +15,35 @@ public:
 	~Stack(); // destructor for a stack
 };
 
-int Stack::getSize() {
-	return(sizeof(this->stack)/sizeof(char));
+Stack::Stack(){
+	this->size = 0;
 }
-/* Stack constructor */
-Stack::Stack() {
-	
-}
+Stack::~Stack(){}
+
 
 /* Push an item onto the stack */
-void Stack::push(char c) {
-	for (int i=0; i<s
+void Stack::push(char c) {	
+
+	/* First make sure we're not exceeding the stack size */
+	if(this->size+1 > STACK_CAPACITY) {
+		std::cout<<"Stack is already full\n";
+		return;
+	}
+	
+	/* Stick the item at the end of the array */
+	stack[size+1] = c;
+	this->size++;
+}
+
+void Stack::pop() {
+	/* "Pop" the last element of the array */
+	this->size--;
+}
+
+char Stack::top() {
+	return stack[size];
+}
+
+bool Stack::isEmpty() {
+	return(this->size==0);
 }
