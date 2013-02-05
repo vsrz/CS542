@@ -1,3 +1,10 @@
+/**
+ *  Jeremy Villegas
+ *	CS542 HW1
+ *  02/05/2013
+ *
+ */
+
 #include<iostream>
 #include"Stack.h"
 using namespace std;
