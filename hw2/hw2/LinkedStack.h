@@ -10,5 +10,26 @@
 #define __hw2__LinkedStack__
 
 #include <iostream>
+#include "CharLinkedListPair.h"
+#include "StackMomento.h"
+
+using namespace std;
+
+class LinkedStack
+{
+private:
+    CharLinkedList head;
+	friend class StackMomento;
+
+public:
+    LinkedStack() : head( 0 ) { }
+    void push( char c );
+    char pop();
+	int size();
+    void print( ostream & out );
+	void restore(StackMomento* l);
+    ~LinkedStack();
+	StackMomento* createMomento();
+};
 
 #endif /* defined(__hw2__LinkedStack__) */
