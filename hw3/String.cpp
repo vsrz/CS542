@@ -3,27 +3,48 @@
 
 String::String( const char * s = "")
 {	
-	const char* o = s;
-	// Get strlen of s
-	len = 0;
-	while(*s++ != '\0')
-		len++;
-
+	len = strlen(s);
 	// Create new memspace for the string
-	buf = new char[len+1]();
-
-	// Restore original pointer value
-	s = o;
-
-	// Copy contents of s over
-	memcpy(buf, s, len*sizeof(char));
+	assert(len+1 > 0);
+	buf = NULL;
+	strcpy(buf, s);
 	
-	//cout << "len: " << len << " buf: " << buf << " s: " << s << " strlen: " << strlen(buf);
+	// Copy contents of s over
+	//memcpy(buf, s, len*sizeof(char));
+	// while(*buf++ = *s++); // why break?
+
+	cout << "len: " << len << " buf: " << buf << " s: " << s << " strlen: " << strlen(buf) <<  endl;
 }
 
 String::String( const String & s )
 {
+	
+}
 
+char* String::strcpy(char* dest, const char* source)
+{
+	if(dest != NULL) delete dest;
+	dest = new char[strlen(dest)];
+	for(int i=0; i<len; i++)
+		dest[i] = source[i];
+	dest[len] = '\0';
+	buf = dest;
+	return dest;
+}
+
+int String::strlen( const char * s) 
+{	// Get strlen of s
+	int len = 0;
+	if(s==NULL) return 0;
+	while(*s++ != '\0')
+		len++;
+	return len;
+
+}
+
+int String::strlen( const String & s)
+{
+	return(strlen(s.buf));
 }
 
 String String::operator = ( const String & s )
@@ -60,14 +81,17 @@ int String::indexOf( String pattern )
 
 bool String::operator == ( String s )
 {
-	if(s.len == len)
-		return true;
-	return false;
+	if(len != s.len)
+		return false;
+	for ( int i = 0; i < s.len; i++ )
+		if ( buf[i] != s.buf[i] )
+			return false;
+	return true;
 }
 
 bool String::operator != ( String s )
 {
-	return false;
+	return ! operator == (s);
 }
 
 bool String::operator > ( String s )
@@ -113,7 +137,7 @@ void String::read( istream & in )
 
 String::~String() 
 {
-	delete[] buf; 
+	//delete[] buf; 
 }
 
 ostream & operator << ( ostream & out, String str )

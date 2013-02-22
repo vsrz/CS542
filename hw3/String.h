@@ -3,6 +3,7 @@
 #define STRING_H
 
 #include <iostream>
+#include <assert.h>
 
 using namespace std;
 
@@ -13,6 +14,9 @@ class String
     /// this String from the parameter s
     String( const char * );
     String( const String & s );	
+	int strlen(const char *);
+	char* strcpy(char*, const char*);
+	int String::strlen( const String &);
     String operator = ( const String & s );
     char & operator [] ( int index );
     int size();	
