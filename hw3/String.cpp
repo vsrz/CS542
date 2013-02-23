@@ -4,33 +4,44 @@
 String::String( const char * s = "")
 {	
 	len = strlen(s);
-	// Create new memspace for the string
-	assert(len+1 > 0);
-	buf = NULL;
-	strcpy(buf, s);
 	
-	// Copy contents of s over
-	//memcpy(buf, s, len*sizeof(char));
-	// while(*buf++ = *s++); // why break?
-
+	if ( len == 0 )
+		buf = NULL;
+	else
+	{
+		// Create new memspace for the string
+		assert(len+1 > 0);
+		buf = new char[len+1];
+		strcpy(buf, s);
+	}
 	cout << "len: " << len << " buf: " << buf << " s: " << s << " strlen: " << strlen(buf) <<  endl;
 }
 
 String::String( const String & s )
 {
-	
+	len = s.len;
+	if ( len == 0 )
+		buf = NULL;
+	else 
+	{
+		assert(len+1 > 0);
+		buf = new char[len+1];
+		strcpy(buf,s.buf);
+	}
 }
 
 char* String::strcpy(char* dest, const char* source)
 {
-	if(dest != NULL) delete dest;
-	dest = new char[strlen(dest)];
-	for(int i=0; i<len; i++)
-		dest[i] = source[i];
-	dest[len] = '\0';
-	buf = dest;
+	// dest should be correctly sized before passing in
+	char* o = dest;
+	int i = 0;
+	while(*dest++ = *source++);
+	dest = o;
+
 	return dest;
 }
+
+
 
 int String::strlen( const char * s) 
 {	// Get strlen of s
@@ -49,24 +60,44 @@ int String::strlen( const String & s)
 
 String String::operator = ( const String & s )
 {
-	return " ";
+	if ( buf != NULL)
+		delete[] buf;
+	len = strlen(s);
+	buf = new char[len+1];
+	strcpy(buf,s.buf);
+	return *this;
 }
 
 char & String::operator [] ( int index )
 {
+	assert(index >= 0);
+	while(index--)
+		buf++;
 	return *buf;
 }
 
 int String::size()
-{
-
-	return 0;
+{	
+	return len+1;
 }
 
 // does not modify this String
 String String::reverse()
 {
-	return " ";
+	String r;
+	char* b = buf;
+	buf = buf+len;
+	r.len = len;
+	r.buf = new char[len];
+	for(int i = len-1;i==0;i--)
+	{
+		*(r.buf)++ = *buf--;
+
+	}
+	buf = b;
+	
+
+	return r;
 } 
 
 int String::indexOf( char c )
@@ -116,15 +147,38 @@ bool String::operator >= ( String s )
 
 /// concatenates this and s to return result
 String String::operator + ( String s )
-{
-	return s;
+{	
+	if ( len == 0 && s.len == 0)
+	{
+		return String();		
+	}
+	else if ( len == 0 )
+		return s;
+	else
+	{
+		String r;
+		r.len = len + s.len;		
+		return r;	
+	}
+
 
 }
 
 /// concatenates s onto end of this
 String String::operator += ( String s )
 {
-	return s;
+	if ( len == 0 ) 
+	{
+		len = s.len;
+		buf = new char[len+1];
+		strcpy(buf,s.buf);
+	}
+	else
+	{
+		//String n(buf + s.buf);
+
+	}
+	return *this;
 }
 void String::print( ostream & out )
 {
@@ -132,12 +186,13 @@ void String::print( ostream & out )
 }
 void String::read( istream & in )
 {
-
+	in >> buf;
 }
 
 String::~String() 
 {
-	//delete[] buf; 
+	if ( len > 0 )
+		delete[] buf;
 }
 
 ostream & operator << ( ostream & out, String str )
@@ -148,5 +203,6 @@ ostream & operator << ( ostream & out, String str )
 
 istream & operator >> ( istream & in, String & str )
 {	
+	str.read(in);
 	return in;
 }

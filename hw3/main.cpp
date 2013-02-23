@@ -12,7 +12,7 @@ int main(int argc, char** argv[])
 	//	cout<< endl << "true";
 	//else
 	//	cout << endl << "false";
-	cout << s << endl;
+	cout << s.reverse() << endl;
 	getchar();
 	return 0;
 }
