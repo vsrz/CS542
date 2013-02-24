@@ -14,7 +14,7 @@ String::String( const char * s = "")
 		buf = new char[len+1];
 		strcpy(buf, s);
 	}
-	cout << "len: " << len << " buf: " << buf << " s: " << s << " strlen: " << strlen(buf) <<  endl;
+	//cout << "len: " << len << " buf: " << buf << " s: " << s << " strlen: " << strlen(buf) <<  endl;
 }
 
 String::String( const String & s )
@@ -58,6 +58,14 @@ int String::strlen( const String & s)
 	return(strlen(s.buf));
 }
 
+bool String::strcmp(const char* s,const char *t)
+{
+	for (  int i = 0; i < len; i++ )
+		if ( s[i] != t[i] )
+			return false;
+	return true;
+}
+
 String String::operator = ( const String & s )
 {
 	if ( buf != NULL)
@@ -84,29 +92,44 @@ int String::size()
 // does not modify this String
 String String::reverse()
 {
-	String r;
-	char* b = buf;
-	buf = buf+len;
-	r.len = len;
-	r.buf = new char[len];
-	for(int i = len-1;i==0;i--)
-	{
-		*(r.buf)++ = *buf--;
+	// Don't bother if the string is empty
+	if(len == 0)
+		return String();
+	char *r, *orig;
+	r = new char[len];
+	orig = r;
 
-	}
-	buf = b;
+	// Loop through the buf in reverse order (skip the null)
+	for ( int i = strlen(buf)-1; i >= 0; --i)
+		*r++ = buf[i];
+
+	// Append the null terminator to the string
+	*r++ = '\0';
+	r = orig;
+	return String(r);
 	
-
-	return r;
 } 
 
 int String::indexOf( char c )
 {
+	for ( int i = 0; i < len; i++ )
+		if(buf[i] == c)
+			return i+1;
 	return 0;
 }
 
 int String::indexOf( String pattern )
 {
+	if ( len != pattern.len )
+		return 0;
+
+	for ( int i = 0; i < len; i++) 
+	{
+
+		return 0;
+
+
+	}
 	return 0;
 }
 
@@ -127,22 +150,38 @@ bool String::operator != ( String s )
 
 bool String::operator > ( String s )
 {
+	if ( *this == s )
+		return false;
+	else 
+	{
+		for ( int i = 0; i < len; i++ )
+			if ( buf[i] > s[i] )
+				return true;
+	}
 	return false;
 }
 
 bool String::operator < ( String s )
 {
-	return false;
+	return ! operator > (s);
 }
 
 bool String::operator <= ( String s )
 {
+	if ( *this == s )
+		return false;
+	else 
+	{
+		for ( int i = 0; i < len; i++ )
+			if ( buf[i] <= s[i] )
+				return true;
+	}
 	return false;
 }
 
 bool String::operator >= ( String s )
 {
-	return false;
+	return ! operator <= (s);
 }
 
 /// concatenates this and s to return result

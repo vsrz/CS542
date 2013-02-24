@@ -16,7 +16,8 @@ class String
     String( const String & s );	
 	int strlen(const char *);
 	char* strcpy(char*, const char*);
-	int String::strlen( const String &);
+	int strlen( const String &);
+	bool strcmp(const char*, const char*);
     String operator = ( const String & s );
     char & operator [] ( int index );
     int size();	
