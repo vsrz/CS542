@@ -4,7 +4,7 @@
 using namespace std;
 using namespace zstring;
 
-int main(int argc, char** argv[])
+int main(int argc, char** argv)
 {
 
 	// Test constuctor (and operator <<)
