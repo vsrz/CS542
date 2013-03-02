@@ -2,62 +2,56 @@
 #ifndef STRING_H
 #define STRING_H
 
+#pragma once
+
 #include <iostream>
 #include <assert.h>
-
 using namespace std;
 
-namespace zstring {
+namespace lstring {
 
-	class String
+class String
+{
+public:
+	/// Both constructors should construct
+	/// from the parameter s
+	String( const char * );	
+	String( const String & );
+	String operator = ( const String& );
+	char & operator [] ( const int );
+	int length() const;
+	int indexOf( char ) const;
+	bool operator == ( const String& ) const;
+	/// concatenates this and s
+	String operator + ( const String& ) const;
+	/// concatenates s onto end of this
+	String operator += ( const String& );
+	void print( ostream & );
+	void read( istream & );
+	~String();
+private:
+	bool inBounds( int i )
 	{
-	  public:
-		/// Both constructors should construct
-		/// this String from the parameter s
-		String( const char * );
-		String( const String & s );	
-		String operator = ( const String & s );
-		char & operator [] ( int index );
-		int size() const;	
-		String reverse(); // does not modify this String
-		int indexOf( char c );
-		int indexOf( String pattern );
-		bool operator == ( String s );
-		bool operator != ( String s );
-		bool operator > ( String s );
-		bool operator < ( String s );
-		bool operator <= ( String s );
-		bool operator >= ( String s );
-		/// concatenates this and s to return result
-		String operator + ( String s );
-		/// concatenates s onto end of this
-		String operator += ( String s );
-		void print( ostream & out );
-		void read( istream & in );
-		~String();
-	  private:
-		bool inBounds( int i )
-		{
-		  return i >= 0 && i < len;
-		}
-		char * buf;
-		int len;
-		struct Node {
-			char ch;
-			Node *next;
-			Node( char newCh, Node *newNext ) : ch( newCh ), next( newNext ) {}
-		};
-		String *head;
-	  };
-	ostream & operator << ( ostream & out, String str );
-	istream & operator >> ( istream & in, String & str );
-	int strlen(const char *);
-	char* strcpy(char*, const char*);
-	char* strcat(char*, const char*);
-	int strlen( const String &);
-	bool strcmp(const char*, const char*);
+		return i >= 0 && i < length();
+	}
+	struct ListNode
+	{
+		char info;
+		ListNode * next;
+		ListNode( char newInfo, ListNode * newNext )	: info( newInfo ), next( newNext ) {}
+	};
+	
+	ListNode * head; // no other data members!!
+	void append ( ListNode *, char ) const;	
+	static ListNode *create ( const char * );
+	static ListNode *copy ( const ListNode * );
+	static void flush( ListNode *p );
+ };
+
+ostream & operator << ( ostream & out, String str );
+istream & operator >> ( istream & in, String & str );
 
 }
 
-
 #endif
+

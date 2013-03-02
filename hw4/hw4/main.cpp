@@ -1,54 +1,37 @@
+
 #include <iostream>
 #include "String.h"
 
 using namespace std;
-using namespace zstring;
+using namespace lstring;
 
 int main(int argc, char** argv)
 {
-
-	// Test constuctor (and operator <<)
+	// Linked list test
 	String one("one");
-	cout << "Test constructor char* \"one\" : " << one << endl;
-
-	//// Test constructor, String based
-	//String two(String("two"));
-	//cout << "Test constructor using String \"two\" : " << two << endl;
+	String two("two");
+	cout << "Test constuctors (and operator <<): " << one << endl;
+			
 
 	//// Test operator =
-	//one = two;
-	//cout << "Operator = (\"one\" = \"two\") : " << one << endl;
-	//one = "one";
+	one = two;
+	cout << "Operator = (\"one\" = \"two\") : " << one << endl;
+	one = "one";
+	
+	// Operator index
+	cout << "Operator [] one[1] : " << one[1] << " index: " << one.indexOf('n') << endl;
+
+	// Length and index
+	cout << "Length of one is : " << one.length() << endl;
 
 	//// Test operator +
-	//cout << "Operator = (one + two) : " << one + two << endl;
+	cout << "Operator = (one + two) : " << one + two << endl;
+	one += two;
+	cout << "Operator += (one += two) : " << one << endl;
 
 	//// Test operator ==
-	//cout << "Operator == (\"one\" == \"one\") : " << (one == one) << endl;
-	//cout << "Operator == (\"one\" == \"two\") : " << (one == two) << endl;
-
-	//// Test operator !=
-	//cout << "Operator != (\"one\" != \"two\") : " << (one != two) << endl;
-	//cout << "Operator != (\"one\" != \"one\") : " << (one != one) << endl;
-
-	//// Test operator >
-	//cout << "Operator > (\"one\" > \"two\") : " << (one > two) << endl;
-	//cout << "Operator > (\"two\" > \"one\") : " << (two > one) << endl;
-
-	//// Test operator <
-	//cout << "Operator < (\"one\" < \"two\") : " << (one < two) << endl;
-	//cout << "Operator < (\"two\" < \"one\") : " << (two < one) << endl;
-
-	//// Test operator >=
-	//cout << "Operator <= (\"one\" <= \"two\") : " << (one >= two) << endl;
-	//cout << "Operator <= (\"two\" <= \"one\") : " << (two >= one) << endl;
-	//cout << "Operator <= (\"one\" <= \"one\") : " << (one >= one) << endl;
-
-	//// Test operator <=
-	//cout << "Operator <= (\"one\" <= \"two\") : " << (one <= two) << endl;
-	//cout << "Operator <= (\"two\" <= \"one\") : " << (two <= one) << endl;
-	//cout << "Operator <= (\"one\" <= \"one\") : " << (one <= one) << endl;
-
+	cout << "Operator == (\"one\" == \"one\") : " << (one == one) << endl;
+	cout << "Operator == (\"one\" == \"two\") : " << (one == two) << endl;
 
 	cin.get();
 	return 0;
