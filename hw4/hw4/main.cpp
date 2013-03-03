@@ -7,6 +7,7 @@ using namespace lstring;
 
 int main(int argc, char** argv)
 {
+	
 	// Linked list test
 	String one("one");
 	String two("two");
@@ -33,6 +34,23 @@ int main(int argc, char** argv)
 	cout << "Operator == (\"one\" == \"one\") : " << (one == one) << endl;
 	cout << "Operator == (\"one\" == \"two\") : " << (one == two) << endl;
 
-	cin.get();
+	// Test read
+	cout << "Input: ";
+	cin >> one;
+	cout << "You entered: " << one;
+	cin.ignore();
+
+	// The following code produces 4 copy creations and 97 function calls
+	// This is because some of the code is writetn recursively
+	// String s("Hello");
+	// String t("There");
+	// s = s + t;
+
+	// The following code produces 3 copies and 40 function calls	
+	// String s("Hello");
+	// String t("There");
+	// s += t;
+
+	//cin.get();
 	return 0;
 }

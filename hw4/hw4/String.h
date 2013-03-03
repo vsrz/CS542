@@ -6,6 +6,10 @@
 
 #include <iostream>
 #include <assert.h>
+
+// Prints functions calls and copy creations
+// #define DEBUG
+
 using namespace std;
 
 namespace lstring {

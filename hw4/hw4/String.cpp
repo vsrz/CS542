@@ -7,11 +7,19 @@ namespace lstring {
 String::String( const char * s = "")
 {
 	head = create(s);
+#ifdef DEBUG
+	cout << "Copy Created" << endl;	
+#endif // DEBUG
+
+	
 }
 
 String::String( const String & s )
 {
 	head = copy( s.head );
+#ifdef DEBUG
+	cout << "Copy Created" << endl;	
+#endif // DEBUG
 }
 
 String::~String() 
@@ -22,6 +30,10 @@ String::~String()
 
 String String::operator = ( const String & s )
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
+
 	ListNode *n = copy( s.head );
 	flush(head);
 	head = n;
@@ -30,6 +42,10 @@ String String::operator = ( const String & s )
 
 char & String::operator [] ( const int index )
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
+
 	ListNode *n = head;
 	for( int i = index ; i > 0 ; i-- )
 		n = n->next;
@@ -38,6 +54,9 @@ char & String::operator [] ( const int index )
 
 int String::length() const
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	ListNode *n = head;		
 	if(head == NULL) return 0;
 	int i = 1;
@@ -48,6 +67,9 @@ int String::length() const
 	
 int String::indexOf( char c ) const
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	if(head == NULL) return -1;
 	int i = 0;
 	for( ListNode *n = head; n; n = n->next, ++i )
@@ -59,6 +81,9 @@ int String::indexOf( char c ) const
 
 bool String::operator == ( const String & s ) const
 {		
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	ListNode *l = head, *r = s.head;
 		
 	do
@@ -77,6 +102,9 @@ bool String::operator == ( const String & s ) const
 
 String String::operator + ( const String & s ) const
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	String str = *this;
 	for( ListNode *n = s.head; n; n = n->next )
 		append(str.head, n->info);
@@ -86,6 +114,9 @@ String String::operator + ( const String & s ) const
 
 String String::operator += ( const String & s )
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	// append each character to end node (slow!)
 	for( ListNode *n = s.head; n; n = n->next )
 		append(head, n->info);
@@ -98,9 +129,23 @@ void String::print( ostream & out )
 		out << n->info;
 }
 
+void String::read( istream & in ) 
+{
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
+	char uin[256];
+	in >> uin;
+	flush(head);
+	head = create(uin);	
+}
+
 
 void String::append ( ListNode *p, char s ) const
 {	   
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	while(p->next) p = p->next;
 	ListNode *n = new ListNode(s,NULL);
 	p->next = n;		
@@ -108,6 +153,9 @@ void String::append ( ListNode *p, char s ) const
 
 String::ListNode* String::create ( const char *s )
 {		
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	// recursively create nodes passing the next char as the new head
 	return s[0] != NULL ? 
 		new ListNode ( s[0], create ( s+1 ) ) :
@@ -116,6 +164,9 @@ String::ListNode* String::create ( const char *s )
 
 String::ListNode* String::copy ( const ListNode *s )
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	return s != NULL ?
 		new ListNode( s->info, copy( s->next ) ) :
 		NULL;
@@ -123,6 +174,9 @@ String::ListNode* String::copy ( const ListNode *s )
 
 void String::flush( ListNode *p )
 {		
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	if(p != NULL)
 		flush(p->next);
 	delete[] p;
@@ -130,7 +184,21 @@ void String::flush( ListNode *p )
 
 ostream & operator << ( ostream & out, String str )
 {
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
 	str.print(out);
 	return out;
 }
+
+istream & operator >> ( istream & in, String & str )
+{
+#ifdef DEBUG
+	cout << "Function called" << endl;	
+#endif // DEBUG
+	str.read(in);
+	return in;
+
+}
+
 } // end namespace
