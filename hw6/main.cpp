@@ -1,10 +1,3 @@
-//
-//  main.cpp
-//  hw6
-//
-//  Created by vsrz on 3/16/13.
-//  Copyright (c) 2013 vsrz. All rights reserved.
-//
 
 #include <iostream>
 #include "Array.h"
@@ -12,27 +5,30 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[])
-{
-    Array<int> a(5);
-    Matrix<int> m(5,5);
-    
-    for( int i = 0; i < a.length(); ++i )
-        a[i] = i+1;
-    cout << "Test array\n";
-    cout << a[0] << a[1] << a[2] << a[3] << a[4] << endl << endl;
-    
-    for( int r = 0; r < m.numRows(); ++r )
-        for( int c = 0; c < m.numCols(); ++c )
-        {
-            m[r][c] = NULL;
-            m[r][c] = c;
-        }
-    
-/*    for ( int r = 0; m.numRows(); ++r )
-        cout << m[r];
-  */
-    getchar();
-    return 0;
-}
 
+template
+  < class T >
+void fillMatrix( Matrix <T> & m )
+{
+  int i, j;
+  for ( i = 0; i < m.numRows(); i++ )
+    m[i][0] = T();
+  for ( j = 0; j < m.numCols(); j++ )
+    m[0][j] = T();
+  for ( i = 1; i < m.numRows(); i++ )
+    for ( j = 1; j < m.numCols(); j++ )
+    {
+      m[i][j] = T(i * j);
+    }
+}
+int main()
+{
+  Matrix < int > m(10,5);
+  fillMatrix( m );
+  cout << m;
+  Matrix < double > M(8,10);
+  fillMatrix( M );
+  cout << M;
+  getchar();
+  return 0;
+}

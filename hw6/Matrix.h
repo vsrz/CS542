@@ -15,9 +15,7 @@
 
 using namespace std;
 
-template
-< class Element >
-class Matrix
+template < class Element > class Matrix
 {
 private:
     int rows, cols;
@@ -48,7 +46,7 @@ public:
     {
         // You can write this one too, but use the Array::operator<<
         for( int i = 0; i < rows; ++i)
-            out << m[i];
+            out << m[i] << endl;
     }
     friend ostream & operator << ( ostream & out, Matrix & m )
     {

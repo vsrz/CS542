@@ -25,7 +25,7 @@ public:
     {
     }
     Array( Array & l )
-    : len( l.len ), buf( new int[l.len] )
+    : len( l.len ), buf( new T [l.len] )
     {
         for ( int i = 0; i < l.len; i++ )
             buf[i] = l.buf[i];
@@ -34,7 +34,7 @@ public:
     {
         return len;
     }
-    int & operator [] ( int i )
+    T & operator [] ( int i )
     {
         assert( 0 <= i && i < len );
         return buf[i];
