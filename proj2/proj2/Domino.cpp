@@ -1,8 +1,8 @@
 #include "Domino.h"
 
-Domino::Domino( int l, int r ) {
-    left = l;
-    right = r;
+Domino::Domino( const Domino &d ) {
+    left = d.getHighPip();
+    right = d.getLowPip();
 
 }
 
@@ -27,11 +27,13 @@ void Domino::setRightPip( int right )
     this->right = right;
 }
 
-int Domino::getHighPip() {
+int Domino::getHighPip() const 
+{
 	return std::max( left, right );
 }
 
-int Domino::getLowPip() {
+int Domino::getLowPip() const 
+{
 	return std::min( left, right );
 }
 

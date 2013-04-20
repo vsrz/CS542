@@ -4,6 +4,9 @@
 
 #pragma once
 
+#include <vector>
+#include <iostream>
+
 #include "Domino.h"
 
 
@@ -12,17 +15,20 @@ class DominoCollection {
 
 private:
 	int count;
-	int Domino_dominoes;
+	std::vector<Domino> dominoes;
 
 public:
-	void addRandomDomino();
+	
+	void addDomino( Domino d );
+	Domino drawDomino( void );
+	Domino drawRandomDomino( void );
+	void shuffle( void );
+	Domino getDomino( Domino d );
 
-	void addDomino();
+	void print( std::ostream & out );
 
-	void shuffle();
-
-	void getDomino();
 };
 
+std::ostream & operator << ( std::ostream & out, DominoCollection d );
 #endif
 

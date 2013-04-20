@@ -16,14 +16,15 @@ private:
 
     int getOppositePip( int pip );
 public:
-    Domino::Domino( int l, int r );
+    Domino( int l, int r ) : left( l ), right ( r ) {}
+    Domino( const Domino &d  );
     ~Domino();
 
     void setPip( int left, int right );
     void setLeftPip( int left );
     void setRightPip( int right );
-	int getHighPip();
-	int getLowPip();
+	int getHighPip() const;
+	int getLowPip() const;
 	bool isDouble();
 	bool isSuit( int suit );
     
