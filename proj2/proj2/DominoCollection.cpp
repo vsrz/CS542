@@ -1,45 +1,53 @@
 
 #include <iterator>
 #include <vector>
+#include <cassert>
 
 #include "DominoCollection.h"
 #include "RandomNumberGenerator.h"
 
 
 /**
- * Adds the specified domino into the queue of dominoes
+ * Adds the specified domino into the stack of dominoes
  */
 void DominoCollection::addDomino( Domino d ) {
 	dominoes.push_back( d );
 }
 
 /**
- * Removes and returns an instance of the next domino on the queue of dominoes.
+ * Removes and returns the next domino on the stack of dominoes.
  */
-Domino & DominoCollection::removeDomino( void )
+Domino DominoCollection::removeDomino( void )
 {
-	this->lastDomino = dominoes.back();
+	Domino d(dominoes.back());
 	dominoes.pop_back();
-	return lastDomino;
+	return Domino( d );
 }
 
 /**
- * Removes and returns a random domino from the queue
+ * Removes and returns a random domino from the stack
  */	
-Domino & DominoCollection::drawDomino( void )
-{
-	RandomNumberGenerator r;
-	int index = r.nextNumber( dominoes.size()  );
-	lastDomino = *( dominoes.end() - index );
-	// std::cout << "Erase Index: " << index << " Size: " << dominoes.size() << d << std::endl;
-	dominoes.erase( dominoes.end() - index );
-	return lastDomino;
+// Domino DominoCollection::drawDomino( void )
+// {
+// 	RandomNumberGenerator r;
+// 	int index = 0; // = r.nextNumber( dominoes.size()  );
+// 	Domino d( dominoes[0] );
+// 	dominoes.erase(dominoes.begin());
+	
+// 	return d;
 	
 
+// }
+void DominoCollection::drawDomino( void )
+{
+    assert(dominoes.size() != 0 && "Your vector is empty");
+    int index = 0; //random.nextNumber( dominoes.size()  );
+    assert(index < dominoes.size() && "Buffer overflow...");
+    std::cout << " Size is > 0 " << std::endl;
+    dominoes.erase( dominoes.begin() + index );
 }
-
 /**
- * Shuffles the dominoes in the entire queue
+ * Shuffles the dominoes in the entire stack
  */	
 void DominoCollection::shuffle() {
 	throw "Not yet implemented";
@@ -59,13 +67,13 @@ bool DominoCollection::isEmpty( void )
 }
 
 /**
- * Prints all the dominoes in the queue, in order
+ * Prints all the dominoes in the stack, in order
  */
 void DominoCollection::print( std::ostream & o )
 {
 	int count = 0;
 	
-	// loop through each domino in the queue and print it
+	// loop through each domino in the stack and print it
     for( std::vector<Domino>::iterator it = dominoes.begin();
     		it != dominoes.end();
     		++it )

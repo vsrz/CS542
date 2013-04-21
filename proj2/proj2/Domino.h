@@ -18,8 +18,8 @@ private:
 public:
     Domino( int l, int r ) : left( l ), right ( r ) {}
     Domino( const Domino &d  );
-    Domino( void ) {} 
-    ~Domino() {};
+    Domino( void ) { } 
+    ~Domino() { };
 
     void setPip( int left, int right );
     void setLeftPip( int left );

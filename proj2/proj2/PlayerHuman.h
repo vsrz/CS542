@@ -10,7 +10,6 @@ class PlayerHuman : public Player {
 
 public:
 	void playDomino();
-
 	void makeBid();
 };
 

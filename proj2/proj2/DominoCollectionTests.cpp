@@ -25,34 +25,39 @@ void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
 
     DominoCollection trick;
 
+    std::cout << "Insert dominoes into collection";
+
     trick.addDomino( doubleFive );
     trick.addDomino( doubleFour );
     trick.addDomino( treySix );
     trick.addDomino( oneOne );
 
-    int i = 0;
-    std::cout << "Draw " << trick.getSize() << " random dominoes from Collection." << std::endl;
-    while( ++i <= 4 )
+    std::cout << trick << std::endl;
+
+    std::cout << "Draw " << trick.getSize() << " dominoes in order from Collection." << std::endl;
+    while( !trick.isEmpty() )
     {
-        
-        std::cout << trick.drawDomino();
+        Domino d = trick.removeDomino();
+        std::cout << d;
     }
 
     std::cout << "Ok." << std::endl;
 
-    trick.addDomino( doubleFive );
-    trick.addDomino( doubleFour );
-    trick.addDomino( treySix );
-    trick.addDomino( oneOne );
+    DominoCollection t2;
+    t2.addDomino( doubleFive );
+    t2.addDomino( doubleFour );
+    t2.addDomino( treySix );
+    t2.addDomino( oneOne );
 
-    // int i = 0;
-    // std::cout << "Draw 4 random dominoes from Collection." << std::endl;
-    // while( ++i < 4 )
+    std::cout << "Draw 4 random dominoes from Collection." << std::endl;
+    t2.drawDomino();
+    // while( !trick.isEmpty() )
     // {
-    //     Domino d = trick.drawRandomDomino();
-    //     std::cout << d;
+    //     trick.drawDomino();
+    //     //Domino d = trick.drawDomino();
+    //     //std::cout << d;
     // }
-    // std::cout << "Ok." << std::endl;
+    std::cout << "Ok." << std::endl;
 
     // trick.addDomino( doubleFive );
     // trick.addDomino( doubleFour );

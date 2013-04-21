@@ -15,14 +15,15 @@ class DominoCollection {
 
 protected:
 	std::vector<Domino> dominoes;
-	Domino lastDomino;
+
 public:
 	DominoCollection( void ) {}
+	DominoCollection( const Domino &d ) { dominoes.push_back( d ); }
 	DominoCollection( const std::vector<Domino> &d ) { dominoes = d; }
 	~DominoCollection( void ) {} 
 
-	Domino & removeDomino( void );
-	Domino & drawDomino( void );
+	Domino removeDomino( void );
+	void drawDomino( void );
 	Domino getDomino( Domino d );
 
 	void addDomino( Domino d );
