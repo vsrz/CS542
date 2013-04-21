@@ -34,9 +34,8 @@ void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
     std::cout << "Draw " << trick.getSize() << " random dominoes from Collection." << std::endl;
     while( ++i <= 4 )
     {
-        Domino d = trick.drawRandomDomino();
-        Domino q = trick.drawDomino();
-        std::cout << d;
+        
+        std::cout << trick.drawDomino();
     }
 
     std::cout << "Ok." << std::endl;

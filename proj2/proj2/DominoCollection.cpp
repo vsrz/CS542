@@ -16,28 +16,27 @@ void DominoCollection::addDomino( Domino d ) {
 /**
  * Removes and returns an instance of the next domino on the queue of dominoes.
  */
-Domino DominoCollection::drawDomino( void )
+Domino & DominoCollection::removeDomino( void )
 {
-	Domino d(dominoes.back());
+	this->lastDomino = dominoes.back();
 	dominoes.pop_back();
-	return d;
+	return lastDomino;
 }
 
 /**
  * Removes and returns a random domino from the queue
  */	
-Domino DominoCollection::drawRandomDomino( void )
+Domino & DominoCollection::drawDomino( void )
 {
 	RandomNumberGenerator r;
 	int index = r.nextNumber( dominoes.size()  );
-	Domino d( *( dominoes.end() - index ) );
-	std::cout << "Erase Index: " << index << " Size: " << dominoes.size() << d << std::endl;
+	lastDomino = *( dominoes.end() - index );
+	// std::cout << "Erase Index: " << index << " Size: " << dominoes.size() << d << std::endl;
 	dominoes.erase( dominoes.end() - index );
-	return d;
+	return lastDomino;
 	
 
 }
-
 
 /**
  * Shuffles the dominoes in the entire queue
