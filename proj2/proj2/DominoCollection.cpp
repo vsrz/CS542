@@ -47,16 +47,16 @@ void DominoCollection::print( std::ostream & o )
 	int count = 0;
 	
 	// loop through each domino in the stack and print it
-	
-    // for( std::vector<DominoCollection>::iterator it = dominoes.begin();
-    // 		it != dominoes.end();
-    // 		++it )
-    // {
-    // 	o << it->print();
+    for( std::vector<Domino>::iterator it = dominoes.begin();
+    		it != dominoes.end();
+    		++it )
+    {
+    	Domino d = *it;
+    	o << d;
 
-    // 	// line-break every 7 dominoes
-    // 	if( ++count % 7 == 0 ) std::cout << std::endl;
-    // }
+    	// line-break every 7 dominoes
+    	if( ++count % 7 == 0 ) std::cout << std::endl;
+    }
     	
 
 }

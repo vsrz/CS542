@@ -8,22 +8,23 @@
 #include <cassert>
 
 #include "Domino.h"
+#include "DominoCollection.h"
 
 class Tests
 {
 
-private:
-    void beginTest( std::string name );
-    void endTest( std::string name );
+protected:
     int number;
-
+    std::string name;
+	void beginTest( void );
+    void endTest( void );
+    
 public:
-    Tests(void);
-    ~Tests(void);
+    Tests( void ) : number( 0 ) {}
+    virtual ~Tests( void ) {}
 
-    void DominoCreation( void );
-    void DominoPipTests( void );
-    void DominoComparison( void );
+    virtual void RunAllTests( void ) = 0;
+
     
 };
 

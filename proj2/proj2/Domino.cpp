@@ -77,11 +77,21 @@ bool Domino::isSmallerThan( Domino d, int suit )
 }
 
 
-bool Domino::operator == ( const Domino d )
+bool Domino::operator == ( const Domino & d ) const
 {
     return d.left == left && d.right == right;
 }
 
+bool Domino::operator != ( const Domino & d ) const 
+{
+    return !( *this == d );
+}
+
+
+Domino & Domino::operator = ( const Domino & d )
+{
+    *this = d;
+}
 
 /**
  *  Returns the opposite pip of the given pip. If the pip
@@ -95,10 +105,10 @@ int Domino::getOppositePip( int pip )
     return -1;
 }
 
-
 std::ostream & operator << ( std::ostream & out, Domino & d )
 {
     d.print(out);
     return out;
 }
+
 

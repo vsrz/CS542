@@ -30,7 +30,9 @@ public:
     
     bool isSmallerThan( Domino d, int suit );
     bool isLargerThan ( Domino d, int suit );
-    bool operator == ( const Domino d );
+    bool operator == ( const Domino & d ) const;
+    bool operator != ( const Domino & d ) const;
+    Domino & operator = ( const Domino & d );
     void print( std::ostream & out );
 };
 

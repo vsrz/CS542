@@ -1,22 +1,27 @@
-BUILD_DIR := bin
-PROJ := proj2
+BUILD_DIR := obj
 
 CPP := g++
 LD := g++
 
 CFLAGS :=
 LDFLAGS := 
+TFLAGS := -DRUN_TESTS
 
-SRC_DIR := ../../$(PROJ)
+SRC_DIR := ../../proj2
 
 CPP_SRC := $(wildcard $(SRC_DIR)/*.cpp)
+CPP_OBJS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(CPP_SRC))
+TEST_CPP_OBJS := $(patsubst $(TFLAGS) $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(CPP_SRC))
 
 all : project
 
-project :
-	$(CPP) -o $(PROJ) $(CPP_SRC) $(LDFLAGS)
+project : build_dir $(CPP_OBJS)
+	$(LD) -o $@ $(CPP_OBJS) $(LDFLAGS)
 
-$(BUILD_DIR)/%.o : $(OMEGA_SRC_DIR)/%.cpp
+tests : build_dir $(CPP_OBJS)
+	$(LD) $(TFLAGS) -o $@ $(TEST_CPP_OBJS) $(LDFLAGS)
+
+$(BUILD_DIR)/%.o : $(SRC_DIR)/%.cpp
 	$(CPP) $(CFLAGS) -o $@ -c $<
 
 build_dir :
@@ -24,9 +29,9 @@ build_dir :
 
 clean :
 	rm -rf $(BUILD_DIR)
-	rm -f $(PROJ)
+	rm -f project
+	rm -f tests
 
 rebuild : clean all
 
-test : $(PROJ)
-
+test : project
