@@ -1,31 +1,46 @@
+
+#include <iterator>
+#include <vector>
+
 #include "DominoCollection.h"
+#include "RandomNumberGenerator.h"
+
 
 /**
- * Adds the specified domino into the stack of dominoes
+ * Adds the specified domino into the queue of dominoes
  */
 void DominoCollection::addDomino( Domino d ) {
 	dominoes.push_back( d );
 }
 
 /**
- * Removes and returns an instance of the next domino on the stack of dominoes.
+ * Removes and returns an instance of the next domino on the queue of dominoes.
  */
 Domino DominoCollection::drawDomino( void )
 {
-
+	Domino d(dominoes.back());
+	dominoes.pop_back();
+	return d;
 }
 
 /**
- * Removes and returns a random domino from the stack
+ * Removes and returns a random domino from the queue
  */	
 Domino DominoCollection::drawRandomDomino( void )
 {
+	RandomNumberGenerator r;
+	int index = r.nextNumber( dominoes.size()  );
+	Domino d( *( dominoes.end() - index ) );
+	std::cout << "Erase Index: " << index << " Size: " << dominoes.size() << d << std::endl;
+	dominoes.erase( dominoes.end() - index );
+	return d;
+	
 
 }
 
 
 /**
- * Shuffles the dominoes in the entire stack
+ * Shuffles the dominoes in the entire queue
  */	
 void DominoCollection::shuffle() {
 	throw "Not yet implemented";
@@ -39,14 +54,19 @@ Domino DominoCollection::getDomino( Domino d ) {
 	throw "Not yet implemented";
 }
 
+bool DominoCollection::isEmpty( void )
+{
+	return dominoes.size() == 0;
+}
+
 /**
- * Prints all the dominoes in the stack, in order
+ * Prints all the dominoes in the queue, in order
  */
 void DominoCollection::print( std::ostream & o )
 {
 	int count = 0;
 	
-	// loop through each domino in the stack and print it
+	// loop through each domino in the queue and print it
     for( std::vector<Domino>::iterator it = dominoes.begin();
     		it != dominoes.end();
     		++it )
@@ -59,6 +79,11 @@ void DominoCollection::print( std::ostream & o )
     }
     	
 
+}
+
+int DominoCollection::getSize( void )
+{
+	return dominoes.size();
 }
 
 std::ostream & operator << ( std::ostream & out, DominoCollection d )

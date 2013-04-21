@@ -7,6 +7,7 @@
 #include "Tests.h"
 #include "DominoCollectionTests.h"
 #include "DominoTests.h"
+#include "RandomNumberGenerator.h"
 
 #endif
 
@@ -22,6 +23,5 @@ int main( int argc, char** argv)
 	dct.RunAllTests();
 
 #endif
-
     return 0;
 }

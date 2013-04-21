@@ -6,11 +6,6 @@ Domino::Domino( const Domino &d ) {
 
 }
 
-Domino::~Domino()
-{
-
-}
-
 void Domino::setPip( int left, int right )
 {
     this->left = left;
