@@ -32,9 +32,9 @@ public:
 	void print( std::ostream & out );
 
 	int getSize( void );
+	bool contains( const Domino d );	
 
 	DominoCollection & operator = ( const DominoCollection dc );
-
 	bool operator == ( const DominoCollection dc ) const;
 	bool operator != ( const DominoCollection dc ) const;
 };

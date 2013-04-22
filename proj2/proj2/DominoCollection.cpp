@@ -56,8 +56,7 @@ void DominoCollection::shuffle( void ) {
 }
 
 /**
- * Returns and removes a specific domino from the collection, returning an instance
- * of the domino.
+ * Returns and removes a specific domino from the collection
  */
 Domino DominoCollection::getDomino( Domino d ) {
 	throw "Not yet implemented";
@@ -83,8 +82,8 @@ void DominoCollection::print( std::ostream & o )
     	Domino d = *it;
     	o << d;
 
-    	// line-break every 7 dominoes
-    	if( ++count % 7 == 0 ) std::cout << std::endl;
+    	// line-break every 6 dominoes
+    	if( ++count % 6 == 0 ) std::cout << std::endl;
     }
     	
 
@@ -93,6 +92,19 @@ void DominoCollection::print( std::ostream & o )
 int DominoCollection::getSize( void )
 {
 	return dominoes.size();
+}
+
+/**
+ * Returns true if the domino exists somewhere in the collection
+ */
+bool DominoCollection::contains( const Domino d ) 
+{
+	for( std::vector<Domino>::iterator it = dominoes.begin();
+		it != dominoes.end();
+		++it )
+		if( *(it) == d ) return true;
+
+	return false;	
 }
 
 DominoCollection & DominoCollection::operator = ( const DominoCollection dc )

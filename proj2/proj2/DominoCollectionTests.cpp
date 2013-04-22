@@ -8,7 +8,8 @@
 
 void DominoCollectionTests::RunAllTests( void )
 {
-	DominoCollectionAddDominoes();
+	// Other tests do this already
+	// DominoCollectionAddDominoes();
     DominoCollectionDrawRandomDominoes();
     DominoCollectionShuffleTest();
 }
@@ -51,21 +52,21 @@ void DominoCollectionTests::DominoCollectionShuffleTest( void )
 
 	lastshuffle = dominoes;
 
-    std::cout << "WARNING: Test may fail in the unlikely event of two similar shuffle results";
+    std::cout << "WARNING: Test may fail if the same shuffle occurs twice" << std::endl;
     for( int i = 0; i < 5; ++i ) 
     {
         dominoes.shuffle();
-        std::cout << "Shuffle " << i+1 << dominoes << std::endl;
+		std::cout << "Shuffling dominoes.";
 		assert( lastshuffle != dominoes );
+		std::cout << " Ok." << std::endl;
 		lastshuffle = dominoes;
     }
 
-	
+	std::cout << std::endl;
 
     endTest();
-
-
 }
+
 void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
 {
     name = "DominoCollection Draw Random Dominoes";
@@ -75,19 +76,21 @@ void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
     Domino treySix( 3, 6 );
     Domino doubleOne( 1, 1);
 
-
     DominoCollection trick;
 
     std::cout << "Insert dominoes into collection";
 
     trick.addDomino( doubleFive );
+	assert(trick.contains( doubleFive ));
     trick.addDomino( doubleFour );
+	assert(trick.contains( doubleFour ));
     trick.addDomino( treySix );
+	assert(trick.contains( treySix ));
     trick.addDomino( doubleOne );
+	assert(trick.contains( doubleOne ));
+	std::cout << " Ok." << std::endl;
 
-    std::cout << trick << std::endl;
-
-    std::cout << "Remove " << trick.getSize() << " dominoes in order from Collection." << std::endl;
+    std::cout << "Remove " << trick.getSize() << " dominoes in order from Collection.";
     Domino d;
 
     d = trick.removeDomino();
@@ -98,21 +101,25 @@ void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
     assert( d == doubleFour );
     d = trick.removeDomino();
     assert( d == doubleFive );
-    
+    std::cout << " Ok." << std::endl;
+
     trick.addDomino( doubleFive );
     trick.addDomino( doubleFour );
     trick.addDomino( treySix );
     trick.addDomino( doubleOne );
 
-    std::cout << "Draw " << trick.getSize() << " random dominoes from Collection." << std::endl;
-    std::cout << "Have: " << trick << std::endl;
-    for( int i = trick.getSize(); i != 0; i-- )
-    {
-        Domino d = trick.drawDomino();
-        std::cout << "Got      : " << d << std::endl;
-        std::cout << "Left     : " << trick << std::endl;
-    }
-    std::cout << "Ok." << std::endl;
+    std::cout << "Draw " << trick.getSize() << " random dominoes from Collection.";
+    
+	d = trick.drawDomino();
+	assert( ! trick.contains( d ) );
+	d = trick.drawDomino();
+	assert( ! trick.contains( d ) );
+	d = trick.drawDomino();
+	assert( ! trick.contains( d ) );
+	d = trick.drawDomino();
+	assert( ! trick.contains( d ) );
+
+	std::cout << " Ok." << std::endl;
 
     endTest();
 

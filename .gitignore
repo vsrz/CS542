@@ -1,6 +1,8 @@
 [Oo]bj
 [Bb]in
 proj2/build/win32/vs2012/Tests
+proj2/build/win32/vs2012/Debug
+*.sdf
 *.user
 *.suo
 *.obj
