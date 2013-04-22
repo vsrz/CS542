@@ -15,6 +15,8 @@ public:
 
 	void DominoCollectionDrawRandomDominoes( void );
     void DominoCollectionAddDominoes( void );
+    void DominoCollectionShuffleTest( void );
+
 
 };
     

@@ -7,7 +7,7 @@
 #include "Tests.h"
 #include "DominoCollectionTests.h"
 #include "DominoTests.h"
-#include "RandomNumberGenerator.h"
+#include "RandomNumberGeneratorTests.h"
 
 #endif
 
@@ -18,6 +18,9 @@ int main( int argc, char** argv)
 
 	DominoTests dt;
 	DominoCollectionTests dct;
+	RandomNumberGeneratorTests r;
+
+	r.RunAllTests();
 
 	dt.RunAllTests();
 	dct.RunAllTests();

@@ -1,8 +1,8 @@
 #include "Domino.h"
 
 Domino::Domino( const Domino &d ) {
-    left = d.getHighPip();
-    right = d.getLowPip();
+    left = d.getLeftPip();
+    right = d.getRightPip();
 
 }
 
@@ -30,6 +30,16 @@ int Domino::getHighPip() const
 int Domino::getLowPip() const 
 {
 	return std::min( left, right );
+}
+
+int Domino::getLeftPip() const
+{
+    return left;
+}
+
+int Domino::getRightPip() const
+{
+    return right;
 }
 
 bool Domino::isDouble() {
@@ -85,7 +95,11 @@ bool Domino::operator != ( const Domino & d ) const
 
 Domino & Domino::operator = ( const Domino & d )
 {
-    *this = d;
+    if( this == &d )
+        return *this;
+    left = d.getLeftPip();
+    right = d.getRightPip();
+    return *this;
 }
 
 /**

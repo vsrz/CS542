@@ -21,36 +21,38 @@ Domino DominoCollection::removeDomino( void )
 {
 	Domino d(dominoes.back());
 	dominoes.pop_back();
-	return Domino( d );
+	return d;
 }
 
 /**
  * Removes and returns a random domino from the stack
  */	
-// Domino DominoCollection::drawDomino( void )
-// {
-// 	RandomNumberGenerator r;
-// 	int index = 0; // = r.nextNumber( dominoes.size()  );
-// 	Domino d( dominoes[0] );
-// 	dominoes.erase(dominoes.begin());
+Domino DominoCollection::drawDomino( void )
+{
+	RandomNumberGenerator r;
+	int index = r.nextNumber( dominoes.size() - 1);
+	Domino d( dominoes[index] );
+	dominoes.erase( dominoes.begin() + index );
 	
-// 	return d;
+	return d;
 	
 
-// }
-void DominoCollection::drawDomino( void )
-{
-    assert(dominoes.size() != 0 && "Your vector is empty");
-    int index = 0; //random.nextNumber( dominoes.size()  );
-    assert(index < dominoes.size() && "Buffer overflow...");
-    std::cout << " Size is > 0 " << std::endl;
-    dominoes.erase( dominoes.begin() + index );
 }
+
 /**
- * Shuffles the dominoes in the entire stack
+ * Shuffles the dominoes in this collection
  */	
-void DominoCollection::shuffle() {
-	throw "Not yet implemented";
+void DominoCollection::shuffle( void ) {
+	
+	std::vector<Domino> d;
+	while( ! isEmpty() )
+	{
+		Domino dom;
+		dom = drawDomino();
+		d.push_back( dom );
+
+	}
+	dominoes = d;
 }
 
 /**
@@ -93,10 +95,31 @@ int DominoCollection::getSize( void )
 	return dominoes.size();
 }
 
+DominoCollection & DominoCollection::operator = ( const DominoCollection dc )
+{
+	if( dc == *this)
+		return *this;
+	dominoes = dc.dominoes;
+	return *this;
+}
+
+bool DominoCollection::operator == ( const DominoCollection dc ) const
+{
+	return dominoes == dc.dominoes;
+
+}
+
+bool DominoCollection::operator != ( const DominoCollection dc ) const
+{
+	return !( dc == *this );
+}
+
+
 std::ostream & operator << ( std::ostream & out, DominoCollection d )
 {
 	d.print( out );
 	return out;
 
 }
+
 

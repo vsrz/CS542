@@ -9,7 +9,6 @@ private:
 
 public:
 	RandomNumberGenerator( void );
-
 	int nextNumber( int maxint );
 
 };

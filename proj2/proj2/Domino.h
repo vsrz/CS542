@@ -26,6 +26,8 @@ public:
     void setRightPip( int right );
 	int getHighPip() const;
 	int getLowPip() const;
+    int getLeftPip() const;
+    int getRightPip() const;
 	bool isDouble();
 	bool isSuit( int suit );
     

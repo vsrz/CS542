@@ -13,44 +13,45 @@ void DominoTests::RunAllTests( void )
 void DominoTests::DominoPipTests( void )
 {
     name = "Domino Creation";
-    Domino d( 5, 5 );
+    Domino fiveFive( 5, 5 );
+    Domino fiveFour( 5, 4 );
+
     beginTest();
     
     std::cout << "High PIP on a 5 | 5 == 5";
-    assert( d.getHighPip() == 5 );
+    assert( fiveFive.getHighPip() == 5 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Low PIP on a 5 | 5 == 5";
-    assert( d.getLowPip() == 5 );
+    assert( fiveFive.getLowPip() == 5 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "5 | 5 is a double";
-    assert( d.isDouble() == true );
+    assert( fiveFive.isDouble() == true );
     std::cout << " Ok." << std::endl;
 
     std::cout << "High PIP on a 5 | 4 == 5";
-    d.setPip( 5, 4 );
-    assert( d.getHighPip() == 5 );
+    assert( fiveFour.getHighPip() == 5 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Low PIP on a 5 | 4 == 4";
-    assert( d.getLowPip() == 4 );
+    assert( fiveFour.getLowPip() == 4 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "5 | 4 is not a double";
-    assert( d.isDouble() == false );
+    assert( fiveFour.isDouble() == false );
     std::cout << " Ok." << std::endl;
 
     std::cout << "High PIP on a 4 | 5 == 5";
-    assert( d.getHighPip() == 5 );
+    assert( fiveFour.getHighPip() == 5 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Low PIP on a 4 | 5 == 4";
-    assert( d.getLowPip() == 4 );
+    assert( fiveFour.getLowPip() == 4 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "4 | 5 is not a double";
-    assert( d.isDouble() == false );
+    assert( fiveFour.isDouble() == false );
     std::cout << " Ok." << std::endl;
 
     
@@ -61,15 +62,17 @@ void DominoTests::DominoPipTests( void )
 void DominoTests::DominoCreation( void )
 {
     name = "Domino Creation";
-    Domino d( 5, 5 );
+    Domino d( 5, 6 );
     beginTest();
 
-    std::cout << "Creating Domino, 5 | 5 ";
+    std::cout << "Creating Domino, 5 | 6 ";
     std::cout << d;
+    assert( d == Domino(d) );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Assignment operator";
     Domino q = d;
+    assert( q == d );
     std::cout << q;
     std::cout << " Ok." << std::endl;
 
@@ -83,7 +86,7 @@ void DominoTests::DominoComparison( void )
 {
     name = "DominoComparison";
     int suit = 5;
-    Domino ours( 5, 5 ), theirs( 5, 4 );
+    Domino ours( 6, 5 ), theirs( 4, 5 );
 
     beginTest();
 

@@ -1,16 +1,21 @@
 
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 
 #include "RandomNumberGenerator.h"
 
 RandomNumberGenerator::RandomNumberGenerator( void )
 {
-	seed = time( NULL );
+	seed = (unsigned long) time( NULL );
+	srand( seed );
 }
 
+/**
+ *  Gets a random number between 0 and maxint 
+ */
 int RandomNumberGenerator::nextNumber( int maxint )
 {
-	return rand() % (maxint);
+	return (rand() % (maxint+1));
 
 }

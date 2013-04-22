@@ -23,7 +23,7 @@ public:
 	~DominoCollection( void ) {} 
 
 	Domino removeDomino( void );
-	void drawDomino( void );
+	Domino drawDomino( void );
 	Domino getDomino( Domino d );
 
 	void addDomino( Domino d );
@@ -32,6 +32,11 @@ public:
 	void print( std::ostream & out );
 
 	int getSize( void );
+
+	DominoCollection & operator = ( const DominoCollection dc );
+
+	bool operator == ( const DominoCollection dc ) const;
+	bool operator != ( const DominoCollection dc ) const;
 };
 
 std::ostream & operator << ( std::ostream & out, DominoCollection d );
