@@ -10,11 +10,12 @@ void DominoCollectionTests::RunAllTests( void )
 {
 	// Other tests do this already
 	// DominoCollectionAddDominoes();
-    DominoCollectionDrawRandomDominoes();
-    DominoCollectionShuffleTest();
+    DrawRandomDominoes();
+    ShuffleTest();
+    GenerateDominoSets();
 }
 
-void DominoCollectionTests::DominoCollectionShuffleTest( void )
+void DominoCollectionTests::ShuffleTest( void )
 {
     name = "DominoCollection Shuffling Test";
     beginTest();
@@ -67,7 +68,7 @@ void DominoCollectionTests::DominoCollectionShuffleTest( void )
     endTest();
 }
 
-void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
+void DominoCollectionTests::DrawRandomDominoes( void )
 {
     name = "DominoCollection Draw Random Dominoes";
     beginTest();
@@ -125,7 +126,7 @@ void DominoCollectionTests::DominoCollectionDrawRandomDominoes( void )
 
 }
 
-void DominoCollectionTests::DominoCollectionAddDominoes( void )
+void DominoCollectionTests::AddDominoes( void )
 {
 
     name = "DominoCollection Adding Dominoes";
@@ -163,4 +164,54 @@ void DominoCollectionTests::DominoCollectionAddDominoes( void )
     std::cout << " Ok." << std::endl;
 
     endTest();
+}
+
+/**
+ * Generates and verifies domino sets
+ */
+void DominoCollectionTests::GenerateDominoSets( void )
+{
+    name = "Domino spawn tests.";
+    beginTest();
+
+    std::cout << "Generate a set of Double-Six dominoes.";
+    DominoCollection set;
+    set.generateDoubleSixSet();
+
+    assert( set.size() == 28 );
+    assert( set.countDominoes( Domino( 6,6 ) ) == 1 );
+    assert( set.countDominoes( Domino( 6,5 ) ) == 1 );
+    assert( set.countDominoes( Domino( 6,4 ) ) == 1 );
+    assert( set.countDominoes( Domino( 6,3 ) ) == 1 );
+    assert( set.countDominoes( Domino( 6,2 ) ) == 1 );
+    assert( set.countDominoes( Domino( 6,1 ) ) == 1 );
+    assert( set.countDominoes( Domino( 6,0 ) ) == 1 );
+    assert( set.countDominoes( Domino( 5,5 ) ) == 1 );
+    assert( set.countDominoes( Domino( 5,4 ) ) == 1 );
+    assert( set.countDominoes( Domino( 5,3 ) ) == 1 );
+    assert( set.countDominoes( Domino( 5,2 ) ) == 1 );
+    assert( set.countDominoes( Domino( 5,1 ) ) == 1 );
+    assert( set.countDominoes( Domino( 5,0 ) ) == 1 );
+    assert( set.countDominoes( Domino( 4,4 ) ) == 1 );
+    assert( set.countDominoes( Domino( 4,3 ) ) == 1 );
+    assert( set.countDominoes( Domino( 4,2 ) ) == 1 );
+    assert( set.countDominoes( Domino( 4,1 ) ) == 1 );
+    assert( set.countDominoes( Domino( 4,0 ) ) == 1 );
+    assert( set.countDominoes( Domino( 3,3 ) ) == 1 );
+    assert( set.countDominoes( Domino( 3,2 ) ) == 1 );
+    assert( set.countDominoes( Domino( 3,1 ) ) == 1 );
+    assert( set.countDominoes( Domino( 3,0 ) ) == 1 );
+    assert( set.countDominoes( Domino( 2,2 ) ) == 1 );
+    assert( set.countDominoes( Domino( 2,1 ) ) == 1 );
+    assert( set.countDominoes( Domino( 2,0 ) ) == 1 );
+    assert( set.countDominoes( Domino( 1,1 ) ) == 1 );
+    assert( set.countDominoes( Domino( 1,0 ) ) == 1 );
+    assert( set.countDominoes( Domino( 7,0 ) ) == 0 );
+    assert( set.countDominoes( Domino( -1,-1 ) ) == 0 );
+    
+    std:: cout << " Ok." << std::endl;
+
+    endTest();
+
+    
 }

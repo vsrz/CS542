@@ -31,12 +31,17 @@ public:
 	bool isEmpty( void );
 	void print( std::ostream & out );
 
+    int size( void );
 	int getSize( void );
+    int countDominoes( const Domino d );
 	bool contains( const Domino d );	
 
 	DominoCollection & operator = ( const DominoCollection dc );
 	bool operator == ( const DominoCollection dc ) const;
 	bool operator != ( const DominoCollection dc ) const;
+
+    void generateDoubleSixSet( void );
+
 };
 
 std::ostream & operator << ( std::ostream & out, DominoCollection d );

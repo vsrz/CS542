@@ -1,9 +1,11 @@
 #include "PlayerAI.h"
 
-void PlayerAI::playDomino() {
+void PlayerAI::makeBid() {
 	throw "Not yet implemented";
 }
 
-void PlayerAI::makeBid() {
+
+void PlayerAI::playDomino( Bid bid, DominoCollection trick )
+{
 	throw "Not yet implemented";
 }

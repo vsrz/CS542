@@ -89,9 +89,30 @@ void DominoCollection::print( std::ostream & o )
 
 }
 
+
+int DominoCollection::size( void )
+{
+    return dominoes.size();
+}
+
 int DominoCollection::getSize( void )
 {
 	return dominoes.size();
+}
+
+/**
+ * Returns the number of dominoes that match the domino given in this set
+ */
+int DominoCollection::countDominoes( const Domino d )
+{
+    int count = 0;
+
+	for( std::vector<Domino>::iterator it = dominoes.begin();
+		it != dominoes.end();
+		++it )
+		if( *(it) == d ) count++;
+
+	return count;
 }
 
 /**
@@ -99,12 +120,8 @@ int DominoCollection::getSize( void )
  */
 bool DominoCollection::contains( const Domino d ) 
 {
-	for( std::vector<Domino>::iterator it = dominoes.begin();
-		it != dominoes.end();
-		++it )
-		if( *(it) == d ) return true;
+    return countDominoes( d ) > 0 ;
 
-	return false;	
 }
 
 DominoCollection & DominoCollection::operator = ( const DominoCollection dc )
@@ -132,6 +149,23 @@ std::ostream & operator << ( std::ostream & out, DominoCollection d )
 	d.print( out );
 	return out;
 
+}
+
+/**
+ * Overwrites the current collection with a new set of Double-Six dominoes
+ */
+void DominoCollection ::generateDoubleSixSet( void )
+{
+    DominoCollection set;
+    for( int i = 6; i > -1; --i )
+    {
+        for( int j = i; j > -1; --j )
+        {
+            set.addDomino( Domino( i, j) );
+        }
+    }
+    
+    *this = set;
 }
 
 

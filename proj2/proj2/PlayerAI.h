@@ -7,8 +7,11 @@
 class PlayerAI : public Player {
 
 public:
-	void playDomino();
-	void makeBid();
+    PlayerAI( void ) : Player () {}
+    PlayerAI( std::string s ) : Player ( s ) {}
+	void makeBid( void );
+	void playDomino( Bid bid, DominoCollection trick );
+
 
 };
 

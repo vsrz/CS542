@@ -6,7 +6,7 @@
 
 #include "DominoGame.h"
 
-class Texas42Game : DominoGame {
+class Texas42Game : public DominoGame {
 
 private:
 	int Bid_currentBid;

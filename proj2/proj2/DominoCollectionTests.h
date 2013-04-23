@@ -13,9 +13,10 @@ public:
 	DominoCollectionTests( void ) : Tests() {} 
 	void RunAllTests( void );
 
-	void DominoCollectionDrawRandomDominoes( void );
-    void DominoCollectionAddDominoes( void );
-    void DominoCollectionShuffleTest( void );
+	void DrawRandomDominoes( void );
+    void AddDominoes( void );
+    void ShuffleTest( void );
+    void GenerateDominoSets( void );
 
 
 };

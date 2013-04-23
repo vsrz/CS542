@@ -26,11 +26,16 @@ public:
 	virtual void makeBid( void ) = 0;
 	virtual void playDomino( Bid bid, DominoCollection trick ) = 0;
 
+    DominoCollection getHand( void );
+
 	void printName( std::ostream &o );
 	void printHand( std::ostream &o );
+    
+    void drawDominoes( DominoCollection & set );
 
 
 };
 
 std::ostream & operator << ( std::ostream & out, Player &p );
+
 #endif

@@ -30,6 +30,7 @@ public:
     int getRightPip() const;
 	bool isDouble();
 	bool isSuit( int suit );
+    void flipDomino( void );
     
     bool isSmallerThan( Domino d, int suit );
     bool isLargerThan ( Domino d, int suit );

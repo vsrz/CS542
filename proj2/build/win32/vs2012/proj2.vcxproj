@@ -110,10 +110,12 @@
     <ClInclude Include="..\..\..\proj2\DominoCollection.h" />
     <ClInclude Include="..\..\..\proj2\DominoCollectionTests.h" />
     <ClInclude Include="..\..\..\proj2\DominoGame.h" />
+    <ClInclude Include="..\..\..\proj2\DominoGameTests.h" />
     <ClInclude Include="..\..\..\proj2\DominoTests.h" />
     <ClInclude Include="..\..\..\proj2\Player.h" />
     <ClInclude Include="..\..\..\proj2\PlayerAI.h" />
     <ClInclude Include="..\..\..\proj2\PlayerHuman.h" />
+    <ClInclude Include="..\..\..\proj2\PlayerTests.h" />
     <ClInclude Include="..\..\..\proj2\RandomNumberGenerator.h" />
     <ClInclude Include="..\..\..\proj2\RandomNumberGeneratorTests.h" />
     <ClInclude Include="..\..\..\proj2\Tests.h" />
@@ -125,11 +127,13 @@
     <ClCompile Include="..\..\..\proj2\DominoCollection.cpp" />
     <ClCompile Include="..\..\..\proj2\DominoCollectionTests.cpp" />
     <ClCompile Include="..\..\..\proj2\DominoGame.cpp" />
+    <ClCompile Include="..\..\..\proj2\DominoGameTests.cpp" />
     <ClCompile Include="..\..\..\proj2\DominoTests.cpp" />
     <ClCompile Include="..\..\..\proj2\main.cpp" />
     <ClCompile Include="..\..\..\proj2\Player.cpp" />
     <ClCompile Include="..\..\..\proj2\PlayerAI.cpp" />
     <ClCompile Include="..\..\..\proj2\PlayerHuman.cpp" />
+    <ClCompile Include="..\..\..\proj2\PlayerTests.cpp" />
     <ClCompile Include="..\..\..\proj2\RandomNumberGenerator.cpp" />
     <ClCompile Include="..\..\..\proj2\RandomNumberGeneratorTests.cpp" />
     <ClCompile Include="..\..\..\proj2\Tests.cpp" />

@@ -51,6 +51,17 @@ bool Domino::isSuit( int suit ) {
     return suit == left || suit == right;
 }
 
+/**
+ *  Rotates a domino
+ */
+void Domino::flipDomino( void )
+{
+    int t;
+    t = left;
+    left = right;
+    right = t;
+}
+
 void Domino::print( std::ostream & o )
 {
     o << " [ " <<  left << " | " << right << " ] ";
@@ -84,7 +95,8 @@ bool Domino::isSmallerThan( Domino d, int suit )
 
 bool Domino::operator == ( const Domino & d ) const
 {
-    return d.left == left && d.right == right;
+    return  (d.left == left && d.right == right ) ||
+            (d.left == right && d.right == left );
 }
 
 bool Domino::operator != ( const Domino & d ) const 
@@ -97,8 +109,8 @@ Domino & Domino::operator = ( const Domino & d )
 {
     if( this == &d )
         return *this;
-    left = d.getLeftPip();
-    right = d.getRightPip();
+    left = d.left;
+    right = d.right;
     return *this;
 }
 

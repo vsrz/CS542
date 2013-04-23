@@ -9,11 +9,13 @@
 
 class DominoGame {
 
-private:
+protected:
 	// PlayerHuman player;
 	DominoCollection dominoSet;
 
+
 public:
+
 	void beginGame();
 };
 
