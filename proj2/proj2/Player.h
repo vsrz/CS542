@@ -23,16 +23,16 @@ public:
 	Player( std::string n ) : name( n ) {};
 	~Player( void ) {}
 
-	virtual void makeBid( void ) = 0;
-	virtual void playDomino( Bid bid, DominoCollection trick ) = 0;
+	virtual Bid makeBid( Bid b ) = 0;
+	//virtual Domino playDomino( Bid bid, int trump, DominoCollection trick ) = 0;
 
     DominoCollection getHand( void );
 
+    void setName( std::string n );
 	void printName( std::ostream &o );
 	void printHand( std::ostream &o );
     
     void drawDominoes( DominoCollection & set );
-
 
 };
 

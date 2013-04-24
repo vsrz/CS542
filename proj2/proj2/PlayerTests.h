@@ -16,7 +16,6 @@ public:
     ~PlayerTests(void);
 
     void RunAllTests( void );
-
     void DrawDominoes( void );
 };
 

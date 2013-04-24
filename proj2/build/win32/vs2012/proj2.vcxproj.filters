@@ -27,9 +27,6 @@
     <ClInclude Include="..\..\..\proj2\DominoCollectionTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\proj2\DominoGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\proj2\DominoTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -37,9 +34,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\proj2\PlayerAI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\proj2\PlayerHuman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\proj2\RandomNumberGenerator.h">
@@ -54,10 +48,22 @@
     <ClInclude Include="..\..\..\proj2\Texas42Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\proj2\DominoGameTests.h">
+    <ClInclude Include="..\..\..\proj2\PlayerTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\proj2\PlayerTests.h">
+    <ClInclude Include="..\..\..\proj2\Texas42Set.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\proj2\Trick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\proj2\PlayerCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\proj2\PlayerCollectionTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\proj2\Texas42GameTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,9 +80,6 @@
     <ClCompile Include="..\..\..\proj2\DominoCollectionTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\proj2\DominoGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\proj2\DominoTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -87,9 +90,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\proj2\PlayerAI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\proj2\PlayerHuman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\proj2\RandomNumberGenerator.cpp">
@@ -104,10 +104,22 @@
     <ClCompile Include="..\..\..\proj2\Texas42Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\proj2\DominoGameTests.cpp">
+    <ClCompile Include="..\..\..\proj2\PlayerTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\proj2\PlayerTests.cpp">
+    <ClCompile Include="..\..\..\proj2\Texas42Set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\proj2\Trick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\proj2\PlayerCollection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\proj2\PlayerCollectionTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\proj2\Texas42GameTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

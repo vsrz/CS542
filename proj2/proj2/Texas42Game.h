@@ -3,23 +3,20 @@
 #define TEXAS42GAME_H
 #pragma once
 
+#include "DominoCollection.h"
+#include "PlayerCollection.h"
 
-#include "DominoGame.h"
-
-class Texas42Game : public DominoGame {
+class Texas42Game 
+{
 
 private:
-	int Bid_currentBid;
-	int Domino_trump;
-	int DominoCollection_played;
-	int leadPlayer;
+    DominoCollection dominoSet;
+    PlayerCollection table;
+    PlayerAI ai[4];
 
-public:
-	void playTrick();
-
-	void drawDominoes();
-
-	void solicitBid();
+public:    
+    void createPlayers();
+    void begin( DominoCollection dominoSet );
 };
 
 #endif

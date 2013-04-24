@@ -7,6 +7,11 @@ DominoCollection Player::getHand( void )
     return hand;
 }
 
+void Player::setName( std::string n )
+{
+    name = n;
+}
+
 void Player::printName( std::ostream &o )
 {
     o << name;
@@ -27,7 +32,7 @@ void Player::drawDominoes( DominoCollection & set )
 std::ostream & operator << ( std::ostream & out, Player &p )
 {
     p.printName( out );
-    out << std::endl;
-    p.printHand( out );
+    //out << std::endl;
+    //p.printHand( out );
     return out;
 }
