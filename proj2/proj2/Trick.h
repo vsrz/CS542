@@ -11,12 +11,18 @@
 class Trick : public DominoCollection
 {
 private:
-
-    Domino trump;
+    DominoCollection trick;    
+    int trump;
     Bid bid;
+    Player *player[4];
 public:
     Trick( Domino trump ) {}
-    ~Trick(void) {}            
+    ~Trick(void) {}  
+
+    void addDomino( Domino d, Player *p );
+    Player* getWinner( void );
+
+    
     
 };
 

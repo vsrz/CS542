@@ -4,12 +4,19 @@
 
 void Texas42Game::createPlayers()
 {
+    // Creates AI players for this set
     for( int i = 0; i < 4; ++i )
     {
-        ai[i].setName( "Player " + i );
-        table.addPlayer( &ai[i] );
+        player[i].setName( "Player " + i );
+        table.addPlayer( &player[i] );
     }
-    
+
+    // Sets partners for them
+    for( int i = 0; i < 2; ++i )
+    {
+        player[i].setPartner( & player[i+2] );
+        player[i+2].setPartner( & player[i] );
+    }
 }
 
 void Texas42Game::begin( DominoCollection set )
@@ -22,14 +29,14 @@ void Texas42Game::begin( DominoCollection set )
     
 
     // Enter set loop
-    while( table.getMarks( &ai[0] ) < 7  && table.getMarks( &ai[1] ) < 7 )
+    while( table.getMarks( &player[0] ) < 7  && table.getMarks( &player[1] ) < 7 )
     {
         // Shuffle the dominoes
         dominoSet.shuffle();
 
         // continue to play sets until one team makes their mark
         Texas42Set set( &table, dominoSet );
-        set.begin();
+        set.play();
 
     }
 

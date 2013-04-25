@@ -25,7 +25,6 @@ public:
     Player* nextPlayer( void );
     void setNextPlayer( Player *p );
 
-
     int playerCount( void );
     bool contains( Player *p );
 

@@ -22,7 +22,17 @@ void Player::printHand( std::ostream &o )
     o << hand;
 
 }
-    
+   
+void Player::setPartner( Player *p )
+{
+    partner = p;
+}
+
+Player *Player::getPartner( void )
+{
+    return partner;
+}
+
 void Player::drawDominoes( DominoCollection & set )
 {
     while( hand.size() < 7 ) hand.addDomino( set.drawDomino() );

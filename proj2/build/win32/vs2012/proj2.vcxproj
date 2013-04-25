@@ -122,6 +122,7 @@
     <ClInclude Include="..\..\..\proj2\Texas42GameTests.h" />
     <ClInclude Include="..\..\..\proj2\Texas42Set.h" />
     <ClInclude Include="..\..\..\proj2\Trick.h" />
+    <ClInclude Include="..\..\..\proj2\TrickTests.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\proj2\Bid.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="..\..\..\proj2\Texas42GameTests.cpp" />
     <ClCompile Include="..\..\..\proj2\Texas42Set.cpp" />
     <ClCompile Include="..\..\..\proj2\Trick.cpp" />
+    <ClCompile Include="..\..\..\proj2\TrickTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

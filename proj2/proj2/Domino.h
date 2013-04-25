@@ -31,7 +31,7 @@ public:
 	bool isDouble();
 	bool isSuit( int suit );
     void flipDomino( void );
-    
+
     bool isSmallerThan( Domino d, int suit );
     bool isLargerThan ( Domino d, int suit );
     bool operator == ( const Domino & d ) const;

@@ -5,7 +5,6 @@
 PlayerCollection::PlayerCollection(void)
 {
     turn = -1;
-    playerCount = 0;
     marks[0] = 0;
     marks[1] = 0;
 }
@@ -23,7 +22,6 @@ PlayerCollection::~PlayerCollection(void)
 void PlayerCollection::addPlayer( Player *p )
 {
     players.push_back( p );
-    ++playerCount;
 }
 
 /**
@@ -33,7 +31,7 @@ void PlayerCollection::addPlayer( Player *p )
 Player* PlayerCollection::nextPlayer( void )
 {
     turn++;
-    if( turn > playerCount-1 ) turn = 0;
+    if( (size_t) turn > players.size() - 1 ) turn = 0;
     return players[turn];
 }
 

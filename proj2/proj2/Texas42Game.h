@@ -12,7 +12,7 @@ class Texas42Game
 private:
     DominoCollection dominoSet;
     PlayerCollection table;
-    PlayerAI ai[4];
+    PlayerAI player[4];
 
 public:    
     void createPlayers();

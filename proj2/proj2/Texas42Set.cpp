@@ -5,7 +5,7 @@
  */
 void Texas42Set::playTricks( void )
 {
-    Player *trickWinner;
+    //Player *trickWinner;
 
     // play tricks until all tricks are played
     for( int turns = 0; turns <= 7; ++turns )
@@ -42,7 +42,8 @@ Bid Texas42Set::solicitBids( void )
 
     // Set the high bid and player as the first to act
     table->setNextPlayer( highBidder );
-    bid = highBid;
+    
+    return highBid;
 }
 
 /**
@@ -50,7 +51,7 @@ Bid Texas42Set::solicitBids( void )
  */
 void Texas42Set::play( void )
 {
-    Player *openingBidder;
+    //Player *openingBidder;
 
     // Get the bids and set the winning bid as the starting player
     bid = solicitBids();

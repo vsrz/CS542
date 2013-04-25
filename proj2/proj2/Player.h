@@ -15,6 +15,7 @@ class Player {
 
 private:
 	std::string name;
+    Player *partner;
 	DominoCollection hand;
 	Bid bid;
 
@@ -32,6 +33,9 @@ public:
 	void printName( std::ostream &o );
 	void printHand( std::ostream &o );
     
+    void setPartner( Player *partner );
+    Player *getPartner( void );
+
     void drawDominoes( DominoCollection & set );
 
 };

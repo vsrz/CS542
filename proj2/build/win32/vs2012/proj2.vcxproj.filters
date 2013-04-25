@@ -66,6 +66,9 @@
     <ClInclude Include="..\..\..\proj2\Texas42GameTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\proj2\TrickTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\proj2\Bid.cpp">
@@ -120,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\proj2\Texas42GameTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\proj2\TrickTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
