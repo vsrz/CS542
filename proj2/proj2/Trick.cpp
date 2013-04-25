@@ -14,6 +14,15 @@ void Trick::addDomino( Domino d, Player *p )
     player[dominoes.size() - 1] = p;
 }
 
+int Trick::getTrump( void )
+{
+    return trump;
+}
+
+void Trick::setTrump( int t )
+{
+    trump = t;
+}
 /**
  *  Returns the current winner of this trick, even if it's in progress
  */
@@ -46,7 +55,7 @@ Player* Trick::getWinner( void )
             suit = winningDomino.getHighPip();
 
             // override the suit if the domino is trump
-            if( winningDomino.getHighPip() == trump )
+            if( winningDomino.isSuit( trump ) )
             {
                 suit = trump;
             }
@@ -55,7 +64,7 @@ Player* Trick::getWinner( void )
         // if not the first domino, check to see if its larger
         else
         {
-            // if the current leader is not trump, ours automatically wins, and we set trump as suit
+            // if the current leader is not trump and ours is, we win and set trump as suit
             if( !winningDomino.isSuit( trump ) && it->isSuit( trump ) )
             {
                 winningPlayerIndex = currentPlayerIndex;
@@ -69,11 +78,12 @@ Player* Trick::getWinner( void )
                 if( it->isLargerThan( winningDomino, trump ) )
                 {
                     winningPlayerIndex = currentPlayerIndex;
+                    winningDomino = *it;
                 }
             }
 
             // the current leader plays a suit which we followed
-            else if(  winningDomino.isLargerThan( *it, suit ) )
+            else if( it->isLargerThan( winningDomino, suit ) )
             {
                 winningPlayerIndex = currentPlayerIndex;
                 winningDomino = *it;

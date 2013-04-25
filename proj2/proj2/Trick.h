@@ -16,12 +16,14 @@ private:
     Bid bid;
     Player *player[4];
 public:
-    Trick( Domino trump ) {}
+    Trick( int t ) : trump( t ) { }
     ~Trick(void) {}  
 
     void addDomino( Domino d, Player *p );
     Player* getWinner( void );
-
+    
+    int getTrump( void );
+    void setTrump( int t );
     
     
 };

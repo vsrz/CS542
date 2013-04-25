@@ -10,6 +10,7 @@
 #include "RandomNumberGeneratorTests.h"
 #include "PlayerTests.h"
 #include "PlayerCollectionTests.h"
+#include "TrickTests.h"
 
 #endif
 
@@ -23,12 +24,14 @@ int main( int argc, char** argv)
 	RandomNumberGeneratorTests r;
     PlayerTests pt;
     PlayerCollectionTests pct;
+    TrickTests tt;
 
 	r.RunAllTests();
 	dt.RunAllTests();
 	dct.RunAllTests();
     pt.RunAllTests();
     pct.RunAllTests();
+    tt.RunAllTests();
 
 #endif
     return 0;
