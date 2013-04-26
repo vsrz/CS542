@@ -8,8 +8,65 @@
 void TrickTests::RunAllTests( void )
 {
     TrickWinner();
+    TrickCount();
 }
 
+void TrickTests::TrickCount( void )
+{
+    name = "Trick value tests";
+    beginTest();
+    
+    PlayerAI ai[4];
+    Domino fiveFive( 5,5 );
+    Domino fiveSix( 5,6 );
+    Domino oneOne( 1,1 );
+    Domino deuceTrey( 2,3 );
+    Domino deuceFour( 4,2 );
+    Domino blankBlank( 0,0 );
+    Domino fiveBlank( 0,5 );
+    Trick trick( 5 );
+
+    PlayerAI a[4];
+
+    for( int i = 0; i < 4; ++i )
+    {
+        a[i].setName( "Player " + i );
+    }
+
+    trick.addDomino( fiveFive, & ai[0] );
+    trick.addDomino( deuceFour, & ai[1] );
+    trick.addDomino( deuceTrey, & ai[2] );
+    trick.addDomino( oneOne, & ai[3] );
+    std::cout << "Value of " << trick << " is 16.";
+    assert( trick.getValue() == 16 );
+    std::cout << " Ok." << std::endl;
+
+    Trick trick1( 1 );
+    trick1.addDomino( deuceFour, & ai[0] );
+    trick1.addDomino( fiveSix, & ai[1] );
+    trick1.addDomino( blankBlank, & ai[2] );
+    trick1.addDomino( oneOne, & ai[3] );
+    std::cout << "Value of " << trick1 << " is 1.";
+    assert( trick1.getValue() == 1 );
+    std::cout << " Ok." << std::endl;
+
+    Trick trick2( 1 );
+    trick2.addDomino( deuceFour, & ai[0] );
+    trick2.addDomino( fiveSix, & ai[1] );
+    trick2.addDomino( blankBlank, & ai[2] );
+    trick2.addDomino( fiveBlank, & ai[3] );
+    std::cout << "Value of " << trick2 << " is 6.";
+    assert( trick2.getValue() == 6 );
+    std::cout << " Ok." << std::endl;
+
+
+
+    endTest();
+
+
+
+
+}
 void TrickTests::TrickWinner( void )
 {
     name = "Test trick winner logic";
@@ -27,7 +84,7 @@ void TrickTests::TrickWinner( void )
     }
 
     int trump = 5;
-    std::cout << "Set trump to 5.";
+    std::cout << "Set trump to fives.";
     Trick trick( trump );
     assert( trick.getTrump() == trump );
     std::cout << " Ok." << std::endl;
@@ -60,7 +117,31 @@ void TrickTests::TrickWinner( void )
     assert( trick.getWinner() == &a[0] );
     std::cout << std::endl;
 
-    //TODO: Add more test cases
+    trump = 2;
+    std::cout << "Change the trump to deuces. Player 4 should win.";
+    trick.setTrump( trump );
+    assert( trick.getWinner() == &a[3] );
+    std::cout << " Ok." << std::endl;
+
+    trump = 3;
+    std::cout << "Change the trump to treys. Player 3 should win.";
+    trick.setTrump( trump );
+    assert( trick.getWinner() == &a[2] );
+    std::cout << " Ok." << std::endl;
+
+    trump = 1;
+    std::cout << "Change the trump to aces. Player 1 should win.";
+    trick.setTrump( trump );
+    assert( trick.getWinner() == &a[0] );
+    std::cout << " Ok." << std::endl;
+
+    trump = 6;
+    std::cout << "Change the trump to sixes. Player 2 should win.";
+    trick.setTrump( trump );
+    assert( trick.getWinner() == &a[1] );
+    std::cout << " Ok." << std::endl;
+
+
 
 
     endTest();

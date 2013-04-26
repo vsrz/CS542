@@ -24,6 +24,7 @@ public:
     
     int getTrump( void );
     void setTrump( int t );
+    int getValue( void );
     
     
 };

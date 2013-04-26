@@ -12,13 +12,14 @@ class Texas42Set
 private:
     PlayerCollection *table;
     DominoCollection dominoSet;
-
     DominoCollection tricks[7];
 
+    Player *firstBid;
     Bid bid;
     
 public:
-    Texas42Set( PlayerCollection *t, DominoCollection d ) : table( t ), dominoSet( d ) {} 
+    Texas42Set( PlayerCollection *t, DominoCollection d, Player *openingBidder ) : 
+        table( t ), dominoSet( d ), firstBid( openingBidder )  {} 
     ~Texas42Set(void) {}
 
     void playTricks( void );

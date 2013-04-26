@@ -17,7 +17,7 @@ private:
 	std::string name;
     Player *partner;
 	DominoCollection hand;
-	Bid bid;
+	Bid bid;    
 
 public:
 	Player( void ) : name( "Unnamed Player" ) {}

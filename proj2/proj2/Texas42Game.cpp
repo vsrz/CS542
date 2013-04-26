@@ -25,7 +25,9 @@ void Texas42Game::begin( DominoCollection set )
     createPlayers();
 
     // Generate a playset
-    dominoSet.generateDoubleSixSet();
+    dominoSet.generateDoubleSixSet();    
+
+    // Set the opening bidder
     
 
     // Enter set loop
@@ -33,9 +35,12 @@ void Texas42Game::begin( DominoCollection set )
     {
         // Shuffle the dominoes
         dominoSet.shuffle();
+        
+        // Set the first bidder
+        firstBidder = &player[setsPlayed % 4];
 
         // continue to play sets until one team makes their mark
-        Texas42Set set( &table, dominoSet );
+        Texas42Set set( &table, dominoSet, firstBidder );
         set.play();
 
     }

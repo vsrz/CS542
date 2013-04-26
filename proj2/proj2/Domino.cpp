@@ -87,6 +87,19 @@ bool Domino::isLargerThan ( Domino d, int suit )
     
 }
 
+/**
+ *  Returns the value of this domino as a counter. 0 if it is not a counter
+ */
+int Domino::isCounter( void )
+{
+    if( (this->left + this->right) % 5 == 0) 
+    {
+        return this->left + this->right;
+    }
+
+    return 0;
+}
+
 bool Domino::isSmallerThan( Domino d, int suit )
 {
     return ! isLargerThan( d, suit );

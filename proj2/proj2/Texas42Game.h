@@ -13,8 +13,12 @@ private:
     DominoCollection dominoSet;
     PlayerCollection table;
     PlayerAI player[4];
+    Player *firstBidder;
+    int setsPlayed;
 
-public:    
+public:
+    Texas42Game( void ) { firstBidder = 0; }
+
     void createPlayers();
     void begin( DominoCollection dominoSet );
 };

@@ -6,12 +6,15 @@
 
 /**
  * Play a domino for this trick, keeping track of the
- * player who played it
+ * player who played it. Do not allow more than 4 dominoes in a trick
  */
 void Trick::addDomino( Domino d, Player *p )
 {
-    DominoCollection::addDomino( d );
-    player[dominoes.size() - 1] = p;
+    if( dominoes.size() < 4 )
+    {
+        DominoCollection::addDomino( d );
+        player[dominoes.size() - 1] = p;
+    }
 }
 
 int Trick::getTrump( void )
@@ -95,4 +98,22 @@ Player* Trick::getWinner( void )
 
     return player[winningPlayerIndex];
 
+}
+
+/**
+ *  Returns the number of points that this trick is worth
+ */
+int Trick::getValue( void )
+{
+    // All tricks are worth at least 1 point
+    int value = 1;
+    
+    for( std::vector<Domino>::iterator it = dominoes.begin();
+        it != dominoes.end();
+        ++it )
+    {    
+        value += it->isCounter();
+    }
+
+    return value;
 }

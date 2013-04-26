@@ -25,6 +25,9 @@ Bid Texas42Set::solicitBids( void )
     Bid highBid;
     Player *highBidder;
 
+    // Set the opening bidder 
+    table->setNextPlayer( firstBid );
+
     // Go around the table and get the bids
     for( int player = table->playerCount(); player = 0; --player )
     {
@@ -56,9 +59,11 @@ void Texas42Set::play( void )
     // Get the bids and set the winning bid as the starting player
     bid = solicitBids();
 
-    // determine winner
+    // Play game
+    playTricks();
 
-    // return marks
+    
+    // Determine the winners for this game
 
     
 

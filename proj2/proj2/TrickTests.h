@@ -14,7 +14,7 @@ public:
 
     void RunAllTests( void );
     void TrickWinner( void );
-
+    void TrickCount( void );
 };
 
 
