@@ -6,24 +6,28 @@
 
 #include "PlayerCollection.h"
 #include "DominoCollection.h"
+#include "Trick.h"
 
 class Texas42Set
 {
 private:
     PlayerCollection *table;
     DominoCollection dominoSet;
-    DominoCollection tricks[7];
+    Trick tricks[7];
 
-    Player *firstBid;
+    int firstBid;
+    Player *highBidder;
+
     Bid bid;
     
 public:
-    Texas42Set( PlayerCollection *t, DominoCollection d, Player *openingBidder ) : 
+    Texas42Set( PlayerCollection *t, DominoCollection d, int openingBidder ) : 
         table( t ), dominoSet( d ), firstBid( openingBidder )  {} 
     ~Texas42Set(void) {}
 
     void playTricks( void );
     Bid solicitBids( void );
+    void resolveSet( void );
 
     void play( void );
 };

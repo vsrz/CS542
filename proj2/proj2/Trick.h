@@ -16,6 +16,7 @@ private:
     Bid bid;
     Player *player[4];
 public:
+    Trick( void ) {}
     Trick( int t ) : trump( t ) { }
     ~Trick(void) {}  
 

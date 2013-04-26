@@ -1,6 +1,22 @@
 #include "Texas42Set.h"
 
 /**
+ * Determines the set winner and awards marks to the winning team
+ */
+void Texas42Set::resolveSet( void )
+{
+    int countTeam1 = 0;
+    int countTeam2 = 0;
+
+    // for each trick, add the proper points to the team that won the trick
+    for( int i = 0; i < 7; ++i )
+    {
+        //if( tricks[i].getWinner() == table->
+    }
+    //if( bid.getBid() > 
+    
+}
+/**
  *  Play all the tricks
  */
 void Texas42Set::playTricks( void )
@@ -23,22 +39,22 @@ void Texas42Set::playTricks( void )
 Bid Texas42Set::solicitBids( void )
 {           
     Bid highBid;
-    Player *highBidder;
+    int highBidder;
 
     // Set the opening bidder 
     table->setNextPlayer( firstBid );
 
     // Go around the table and get the bids
-    for( int player = table->playerCount(); player = 0; --player )
+    for( int seat = 0; seat < 4; ++seat )
     {
         Bid b;
-        Player *bidder = table->nextPlayer();        
+        Player *bidder = table->nextPlayer();
         b = bidder->makeBid( bid );
 
         // If the bid is higher than the current high bid, set the high bidder and bid
         if( b > highBid ) 
         {
-            highBidder = bidder;        
+            highBidder = (seat + firstBid) % 4;        
             highBid = b;
         }
     }
@@ -63,7 +79,7 @@ void Texas42Set::play( void )
     playTricks();
 
     
-    // Determine the winners for this game
+    // Determine the winners for this game and assign marks
 
     
 

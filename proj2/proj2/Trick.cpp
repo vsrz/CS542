@@ -6,7 +6,8 @@
 
 /**
  * Play a domino for this trick, keeping track of the
- * player who played it. Do not allow more than 4 dominoes in a trick
+ * player who played it. Does not allow more than 4 dominoes
+ * in a single trick and does not enforce any play restrictions
  */
 void Trick::addDomino( Domino d, Player *p )
 {

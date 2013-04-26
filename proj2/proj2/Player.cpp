@@ -46,3 +46,17 @@ std::ostream & operator << ( std::ostream & out, Player &p )
     //p.printHand( out );
     return out;
 }
+
+/**
+ * Return the seat that the player is sitting at
+ */
+void Player::setSeat( int s )
+{
+    if( s < 4 && s >= 0 )
+        seat = s;
+}
+
+int Player::getSeat( void )
+{
+    return seat;
+}

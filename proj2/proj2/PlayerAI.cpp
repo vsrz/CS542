@@ -1,7 +1,10 @@
 #include "PlayerAI.h"
 
 Bid PlayerAI::makeBid( Bid b ) {
-	throw "Not yet implemented";
+	
+    // Just return a bid for now
+    return( Bid( 30, 0 ) );
+
 }
 
 

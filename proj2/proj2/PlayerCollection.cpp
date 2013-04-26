@@ -21,7 +21,10 @@ PlayerCollection::~PlayerCollection(void)
  */
 void PlayerCollection::addPlayer( Player *p )
 {
-    players.push_back( p );
+    if( players.size() < 4 )
+    {
+        players.push_back( p );
+    }
 }
 
 /**
@@ -38,9 +41,9 @@ Player* PlayerCollection::nextPlayer( void )
 /**
  *  Sets the player who will be returned when nextPlayer() is called
  */
-void PlayerCollection::setNextPlayer( Player *p )
+void PlayerCollection::setNextPlayer( int playerIndex )
 {
-    turn = indexOf( p ) - 1;
+    turn = playerIndex;
 }
 
 int PlayerCollection::playerCount( void )
@@ -48,33 +51,20 @@ int PlayerCollection::playerCount( void )
     return players.size();
 }
 
-int PlayerCollection::indexOf( Player *p )
-{
-    int i = -1;
-    for( std::vector<Player*>::iterator it = players.begin();
-         it != players.end();
-         ++it )
-     {
-         ++i;
-         if( *it == p ) return i;
-     }
-
-     return -1;
-
-}
-
- bool PlayerCollection::contains( Player *p )
+/**
+ * Returns true if there's a player in the seat
+ */
+ bool PlayerCollection::contains( int seat )
  {
-     return indexOf( p ) >= 0;
+     return (size_t) seat <= players.size() - 1;
  }
 
 /**
- * Get the team ID that the player belongs to
+ * Get the team ID that the player in a seat belongs to
  */
-int PlayerCollection::getTeam( Player *p )
+int PlayerCollection::getTeam( int seat )
 {
-    int seatNum = indexOf( p );
-    switch( seatNum )
+    switch( seat )
     {
         case 0:
         case 2:
@@ -84,21 +74,27 @@ int PlayerCollection::getTeam( Player *p )
         case 3:
             return 1;
             break;
-        default:
-            return -1;
-
     }
-
+    return -1;
 }
+
 /**
  * returns the number of marks for a player (and their partner)
  */
-int PlayerCollection::getMarks( Player *p )
+int PlayerCollection::getMarks( int seat )
 {
-    return marks[ getTeam( p ) ];
+    return marks[ getTeam( seat ) ];
 }
 
-void PlayerCollection::addMarks( Player *p, int marksGiven )
+void PlayerCollection::addMarks( int seat, int marksGiven )
 {
-    marks[ getTeam( p ) ] += marksGiven;
+    marks[ getTeam( seat ) ] += marksGiven;
+}
+
+/**
+ * Returns the address to a player in the collection
+ */
+Player* PlayerCollection::operator [] ( const int index )
+{
+    return players[index];
 }

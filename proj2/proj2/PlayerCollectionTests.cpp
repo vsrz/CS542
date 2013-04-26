@@ -16,31 +16,31 @@ void PlayerCollectionTests::TurnTaking( void )
     name = "Test turn taking";
     beginTest();
 
-    PlayerAI p1("AI Player 1");
-    PlayerAI p2("AI Player 2");
-    PlayerAI p3("AI Player 3");
-    PlayerAI p4("AI Player 4");
+    PlayerAI p1("AI Player 1", 0);
+    PlayerAI p2("AI Player 2", 1);
+    PlayerAI p3("AI Player 3", 2);
+    PlayerAI p4("AI Player 4", 3);
 
     PlayerCollection table;
 
     std::cout << "Add " << p1 << " to the collection";
     table.addPlayer( &p1 );
-    assert( table.contains( &p1 ) );
+    assert( table.contains( 0 ) );
     std::cout << " Ok." << std::endl;
     
     std::cout << "Add " << p2 << " to the collection";
     table.addPlayer( &p2 );
-    assert( table.contains( &p2 ) );
+    assert( table.contains( 1 ) );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Add " << p3 << " to the collection";
     table.addPlayer( &p3 );
-    assert( table.contains( &p3 ) );
+    assert( table.contains( 2 ) );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Add " << p4 << " to the collection";
     table.addPlayer( &p4 );
-    assert( table.contains( &p4 ) );
+    assert( table.contains( 3 ) );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Start with " << p1 << "'s turn";
@@ -76,12 +76,12 @@ void PlayerCollectionTests::TurnTaking( void )
     std::cout << " Ok." << std::endl;
 
     std::cout << "Set the turn to " << p2 << ".";
-    table.setNextPlayer( &p2 );
+    table.setNextPlayer( 1 );
     assert( table.nextPlayer() == &p2 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Set the turn to " << p4 << ".";
-    table.setNextPlayer( &p4 );
+    table.setNextPlayer( 3 );
     assert( table.nextPlayer() == &p4 );
     std::cout << " Ok." << std::endl;
 
@@ -99,10 +99,10 @@ void PlayerCollectionTests::MarksTest( void )
     name = "Marks test";
     beginTest();
     
-    PlayerAI p1("AI Player 1");
-    PlayerAI p2("AI Player 2");
-    PlayerAI p3("AI Player 3");
-    PlayerAI p4("AI Player 4");
+    PlayerAI p1("AI Player 1", 0);
+    PlayerAI p2("AI Player 2", 1);
+    PlayerAI p3("AI Player 3", 2);
+    PlayerAI p4("AI Player 4", 3);
 
     PlayerCollection table;
 
@@ -112,13 +112,13 @@ void PlayerCollectionTests::MarksTest( void )
     table.addPlayer( &p4 );
 
     std::cout << "Give team 1 a mark";
-    table.addMarks( &p1, 1);
-    assert(table.getMarks( &p1 ) == 1 );
+    table.addMarks( 0, 1 );
+    assert(table.getMarks( 0 ) == 1 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Give team 2 a mark";
-    table.addMarks( &p2, 1);
-    assert(table.getMarks( &p2 ) == 1 );
+    table.addMarks( 1, 1);
+    assert(table.getMarks( 1 ) == 1 );
     std::cout << " Ok." << std::endl;
 
     endTest();

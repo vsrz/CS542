@@ -14,8 +14,6 @@ private:
     int turn;
     int marks[2];
     
-    int indexOf( Player *p );
-    int getTeam( Player *p );
 
 public:
     PlayerCollection(void);
@@ -23,13 +21,16 @@ public:
 
     void addPlayer( Player *p );
     Player* nextPlayer( void );
-    void setNextPlayer( Player *p );
+    void setNextPlayer( int playerIndex );
 
     int playerCount( void );
-    bool contains( Player *p );
+    bool contains( int seat );
 
-    int getMarks( Player *p );
-    void addMarks( Player *p, int marks = 1 );
+    int getTeam( int seat );
+    int getMarks( int seat );
+    void addMarks( int seat, int marks = 1 );
+
+    Player* operator [] ( const int index );
 
 
 

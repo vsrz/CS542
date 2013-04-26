@@ -17,11 +17,12 @@ private:
 	std::string name;
     Player *partner;
 	DominoCollection hand;
+    int seat;
 	Bid bid;    
 
 public:
-	Player( void ) : name( "Unnamed Player" ) {}
-	Player( std::string n ) : name( n ) {};
+	Player( void ) : name( "Unnamed Player" ), seat( 0 ) {}
+	Player( std::string n, int s ) : name( n ), seat( s ) {};
 	~Player( void ) {}
 
 	virtual Bid makeBid( Bid b ) = 0;
@@ -33,6 +34,8 @@ public:
 	void printName( std::ostream &o );
 	void printHand( std::ostream &o );
     
+    void setSeat( int );
+    int getSeat( void );
     void setPartner( Player *partner );
     Player *getPartner( void );
 

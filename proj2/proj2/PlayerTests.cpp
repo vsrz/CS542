@@ -27,10 +27,10 @@ void PlayerTests::DrawDominoes( void )
     DominoCollection set;
     set.generateDoubleSixSet();
 
-    PlayerAI p1("Player 1");    
-    PlayerAI p2("Player 2");    
-    PlayerAI p3("Player 3");    
-    PlayerAI p4("Player 4");    
+    PlayerAI p1("AI Player 1", 0);
+    PlayerAI p2("AI Player 2", 1);
+    PlayerAI p3("AI Player 3", 2);
+    PlayerAI p4("AI Player 4", 3);
 
     p1.drawDominoes( set );
     std::cout<< "Draw dominoes for Player 1";
