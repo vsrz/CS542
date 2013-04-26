@@ -16,9 +16,11 @@ class Player {
 private:
 	std::string name;
     Player *partner;
-	DominoCollection hand;
     int seat;
 	Bid bid;    
+
+protected:
+	DominoCollection hand;
 
 public:
 	Player( void ) : name( "Unnamed Player" ), seat( 0 ) {}
@@ -26,7 +28,7 @@ public:
 	~Player( void ) {}
 
 	virtual Bid makeBid( Bid b ) = 0;
-	//virtual Domino playDomino( Bid bid, int trump, DominoCollection trick ) = 0;
+	virtual Domino playDomino( Bid bid, DominoCollection trick ) = 0;
 
     DominoCollection getHand( void );
 

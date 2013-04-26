@@ -11,6 +11,7 @@
 #include "PlayerTests.h"
 #include "PlayerCollectionTests.h"
 #include "TrickTests.h"
+#include "Texas42SetTests.h"
 
 #endif
 
@@ -25,6 +26,7 @@ int main( int argc, char** argv)
     PlayerTests pt;
     PlayerCollectionTests pct;
     TrickTests tt;
+    Texas42SetTests tst;
 
 	r.RunAllTests();
 	dt.RunAllTests();
@@ -32,6 +34,7 @@ int main( int argc, char** argv)
     pt.RunAllTests();
     pct.RunAllTests();
     tt.RunAllTests();
+    tst.RunAllTests();
 
 #endif
     return 0;

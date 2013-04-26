@@ -69,6 +69,9 @@
     <ClInclude Include="..\..\..\proj2\TrickTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\proj2\Texas42SetTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\proj2\Bid.cpp">
@@ -126,6 +129,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\proj2\TrickTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\proj2\Texas42SetTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

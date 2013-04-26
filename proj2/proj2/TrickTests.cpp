@@ -24,7 +24,7 @@ void TrickTests::TrickCount( void )
     Domino deuceFour( 4,2 );
     Domino blankBlank( 0,0 );
     Domino fiveBlank( 0,5 );
-    Trick trick( 5 );
+    Trick trick( Bid( 30, 5 ) );
 
     PlayerAI a[4];
 
@@ -33,28 +33,28 @@ void TrickTests::TrickCount( void )
         a[i].setName( "Player " + i );
     }
 
-    trick.addDomino( fiveFive, & ai[0] );
-    trick.addDomino( deuceFour, & ai[1] );
-    trick.addDomino( deuceTrey, & ai[2] );
-    trick.addDomino( oneOne, & ai[3] );
+    trick.addDomino( fiveFive );
+    trick.addDomino( deuceFour );
+    trick.addDomino( deuceTrey );
+    trick.addDomino( oneOne );
     std::cout << "Value of " << trick << " is 16.";
     assert( trick.getValue() == 16 );
     std::cout << " Ok." << std::endl;
 
-    Trick trick1( 1 );
-    trick1.addDomino( deuceFour, & ai[0] );
-    trick1.addDomino( fiveSix, & ai[1] );
-    trick1.addDomino( blankBlank, & ai[2] );
-    trick1.addDomino( oneOne, & ai[3] );
+    Trick trick1( Bid( 30, 1 ) );
+    trick1.addDomino( deuceFour );
+    trick1.addDomino( fiveSix );
+    trick1.addDomino( blankBlank );
+    trick1.addDomino( oneOne );
     std::cout << "Value of " << trick1 << " is 1.";
     assert( trick1.getValue() == 1 );
     std::cout << " Ok." << std::endl;
 
-    Trick trick2( 1 );
-    trick2.addDomino( deuceFour, & ai[0] );
-    trick2.addDomino( fiveSix, & ai[1] );
-    trick2.addDomino( blankBlank, & ai[2] );
-    trick2.addDomino( fiveBlank, & ai[3] );
+    Trick trick2( Bid( 30, 1 ) );
+    trick2.addDomino( deuceFour );
+    trick2.addDomino( fiveSix );
+    trick2.addDomino( blankBlank );
+    trick2.addDomino( fiveBlank );
     std::cout << "Value of " << trick2 << " is 6.";
     assert( trick2.getValue() == 6 );
     std::cout << " Ok." << std::endl;
@@ -90,55 +90,55 @@ void TrickTests::TrickWinner( void )
     std::cout << " Ok." << std::endl;
 
     std::cout << "Player 1 plays " << fiveFive;
-    trick.addDomino( fiveFive, &a[0] );
+    trick.addDomino( fiveFive );
     assert( trick.contains( fiveFive ) );
-    assert( trick.getWinner() == &a[0] );
+    assert( trick.getWinner() == 0 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Player 2 plays " << fiveSix;
-    trick.addDomino( fiveSix, &a[1] );
+    trick.addDomino( fiveSix );
     assert( trick.contains( fiveSix ) );
-    assert( trick.getWinner() == &a[0] );
+    assert( trick.getWinner() == 0 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Player 3 plays " << deuceTrey;
-    trick.addDomino( deuceTrey, &a[2] );
+    trick.addDomino( deuceTrey );
     assert( trick.contains( deuceTrey ) );
-    assert( trick.getWinner() == &a[0] );
+    assert( trick.getWinner() == 0 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Player 4 plays " << deuceFour;
-    trick.addDomino( deuceFour, &a[3] );
+    trick.addDomino( deuceFour );
     assert( trick.contains( deuceFour ) );
-    assert( trick.getWinner() == &a[0] );
+    assert( trick.getWinner() == 0 );
     std::cout << " Ok." << std::endl;
 
     std::cout << "Player 1 wins the trick ";
-    assert( trick.getWinner() == &a[0] );
+    assert( trick.getWinner() == 0 );
     std::cout << std::endl;
 
     trump = 2;
     std::cout << "Change the trump to deuces. Player 4 should win.";
     trick.setTrump( trump );
-    assert( trick.getWinner() == &a[3] );
+    assert( trick.getWinner() == 3 );
     std::cout << " Ok." << std::endl;
 
     trump = 3;
     std::cout << "Change the trump to treys. Player 3 should win.";
     trick.setTrump( trump );
-    assert( trick.getWinner() == &a[2] );
+    assert( trick.getWinner() == 2 );
     std::cout << " Ok." << std::endl;
 
     trump = 1;
     std::cout << "Change the trump to aces. Player 1 should win.";
     trick.setTrump( trump );
-    assert( trick.getWinner() == &a[0] );
+    assert( trick.getWinner() == 0 );
     std::cout << " Ok." << std::endl;
 
     trump = 6;
     std::cout << "Change the trump to sixes. Player 2 should win.";
     trick.setTrump( trump );
-    assert( trick.getWinner() == &a[1] );
+    assert( trick.getWinner() == 1 );
     std::cout << " Ok." << std::endl;
 
 

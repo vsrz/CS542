@@ -11,21 +11,21 @@
 class Trick : public DominoCollection
 {
 private:
-    DominoCollection trick;    
-    int trump;
     Bid bid;
-    Player *player[4];
+    
 public:
     Trick( void ) {}
-    Trick( int t ) : trump( t ) { }
+    Trick( Bid bid ) : bid ( bid ) {}
+    Trick( int trump ) : bid( 30, trump ) {}
     ~Trick(void) {}  
 
-    void addDomino( Domino d, Player *p );
-    Player* getWinner( void );
+    int getWinner( void );
     
     int getTrump( void );
     void setTrump( int t );
     int getValue( void );
+
+    Trick & operator = ( const Trick trick );
     
     
 };

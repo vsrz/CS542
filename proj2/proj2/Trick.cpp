@@ -3,43 +3,29 @@
 
 #include <iostream>
 
-
-/**
- * Play a domino for this trick, keeping track of the
- * player who played it. Does not allow more than 4 dominoes
- * in a single trick and does not enforce any play restrictions
- */
-void Trick::addDomino( Domino d, Player *p )
-{
-    if( dominoes.size() < 4 )
-    {
-        DominoCollection::addDomino( d );
-        player[dominoes.size() - 1] = p;
-    }
-}
-
 int Trick::getTrump( void )
 {
-    return trump;
+    return bid.getTrump();
 }
 
-void Trick::setTrump( int t )
+void Trick::setTrump( int trump )
 {
-    trump = t;
+    bid.setTrump( trump );
 }
+
 /**
- *  Returns the current winner of this trick, even if it's in progress
+ *  Returns the index of the domino that was played that won the trick
  */
-Player* Trick::getWinner( void )
+int Trick::getWinner( void )
 {
     if(dominoes.size() == 0) 
     {
-        return NULL;
+        return -1;
     }
     
     if(dominoes.size() == 1)
     {
-        return player[0];
+        return 0;
     }
 
     Domino winningDomino;
@@ -59,9 +45,9 @@ Player* Trick::getWinner( void )
             suit = winningDomino.getHighPip();
 
             // override the suit if the domino is trump
-            if( winningDomino.isSuit( trump ) )
+            if( winningDomino.isSuit( bid.getTrump() ) )
             {
-                suit = trump;
+                suit = bid.getTrump();
             }
              
         } 
@@ -69,17 +55,17 @@ Player* Trick::getWinner( void )
         else
         {
             // if the current leader is not trump and ours is, we win and set trump as suit
-            if( !winningDomino.isSuit( trump ) && it->isSuit( trump ) )
+            if( !winningDomino.isSuit( bid.getTrump() ) && it->isSuit( bid.getTrump() ) )
             {
                 winningPlayerIndex = currentPlayerIndex;
                 winningDomino = *it;
-                suit = trump;
+                suit = bid.getTrump();
             }
             
             // if the current leader is a trump suit and so is ours, compare it
-            else if( winningDomino.isSuit( trump ) && it->isSuit( trump ) )
+            else if( winningDomino.isSuit( bid.getTrump() ) && it->isSuit( bid.getTrump() ) )
             {
-                if( it->isLargerThan( winningDomino, trump ) )
+                if( it->isLargerThan( winningDomino, bid.getTrump() ) )
                 {
                     winningPlayerIndex = currentPlayerIndex;
                     winningDomino = *it;
@@ -97,7 +83,7 @@ Player* Trick::getWinner( void )
         currentPlayerIndex++;
     }
 
-    return player[winningPlayerIndex];
+    return winningPlayerIndex;
 
 }
 
@@ -118,3 +104,11 @@ int Trick::getValue( void )
 
     return value;
 }
+
+Trick & Trick::operator = ( const Trick trick )
+{
+    this->dominoes = trick.dominoes;
+    this->bid = trick.bid;
+    return *this;
+}
+

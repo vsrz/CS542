@@ -8,7 +8,8 @@ Bid PlayerAI::makeBid( Bid b ) {
 }
 
 
-//void PlayerAI::playDomino( Bid bid, int trump, DominoCollection trick )
-//{
-//	throw "Not yet implemented";
-//}
+Domino PlayerAI::playDomino( Bid bid, DominoCollection trick )
+{
+    // For now, draw a random domino, ignoring rules
+    return hand.drawDomino();
+}

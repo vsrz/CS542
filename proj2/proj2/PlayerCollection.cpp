@@ -43,7 +43,7 @@ Player* PlayerCollection::nextPlayer( void )
  */
 void PlayerCollection::setNextPlayer( int playerIndex )
 {
-    turn = playerIndex;
+    turn = playerIndex - 1;
 }
 
 int PlayerCollection::playerCount( void )

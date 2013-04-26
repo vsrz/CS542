@@ -11,7 +11,8 @@ public:
     PlayerAI( std::string p, int s ) : Player ( p, s ) {}
 	
     Bid makeBid( Bid b );
-	//Domino playDomino( Bid bid, int trump, DominoCollection trick );
+
+    Domino playDomino( Bid bid, DominoCollection trick );
 
 
 };

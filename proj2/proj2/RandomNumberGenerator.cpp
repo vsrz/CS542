@@ -16,6 +16,7 @@ RandomNumberGenerator::RandomNumberGenerator( void )
  */
 int RandomNumberGenerator::nextNumber( int maxint )
 {
+    if( maxint == -1 ) return 0;
 	return (rand() % (maxint+1));
 
 }
