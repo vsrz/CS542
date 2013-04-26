@@ -6,7 +6,7 @@
 
 #include "Domino.h"
 #include "DominoCollection.h"
-#include "tests.h"
+#include "Tests.h"
 #include "PlayerAI.h"
 
 class PlayerTests : public Tests

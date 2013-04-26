@@ -13,6 +13,6 @@ void Tests::endTest( void )
 {
     std::cout << "** End Test **" << std::endl;
     std::cout << "Press enter to continue...";
-    getchar();
+    std::cin.get();
     std::cout << std::endl;
 }

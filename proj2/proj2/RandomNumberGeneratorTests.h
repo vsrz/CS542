@@ -3,7 +3,7 @@
 #define RANDOMNUMBERGENERATORTESTS_H
 
 #pragma once
-#include "tests.h"
+#include "Tests.h"
 class RandomNumberGeneratorTests :
 	protected Tests
 {
