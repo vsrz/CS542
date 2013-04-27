@@ -4,6 +4,9 @@
 
 #pragma once
 #include "Tests.h"
+#include "Texas42Game.h"
+
+
 class Texas42GameTests : public Tests
 {
 public:

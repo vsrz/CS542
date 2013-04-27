@@ -47,7 +47,7 @@ void Texas42SetTests::PlayTrick( void )
     
 
     int winner = 0;
-    for( int i = 0; i < 7; ++i ) 
+    for( int i = 0; i < 7; i++ ) 
     {
         std::cout << "Play the trick";
         trick[i].setTrump( 6 );

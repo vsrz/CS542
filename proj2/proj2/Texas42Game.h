@@ -12,15 +12,15 @@ class Texas42Game
 private:
     DominoCollection dominoSet;
     PlayerCollection table;
-    PlayerAI player[4];
     int firstBidder;
     int setsPlayed;
 
 public:
     Texas42Game( void ) { firstBidder = -1; }
+    Texas42Game( DominoCollection dominoSet, PlayerCollection players ) : dominoSet( dominoSet ), table ( players) {}
 
     void createPlayers();
-    void begin( DominoCollection dominoSet );
+    void begin( void );
 };
 
 #endif
