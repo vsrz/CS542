@@ -22,35 +22,15 @@ void DominoCollectionTests::ShuffleTest( void )
     DominoCollection dominoes;
 	DominoCollection lastshuffle;
 
-	dominoes.addDomino( Domino( 6,6 ) );
-	dominoes.addDomino( Domino( 6,5 ) );
-	dominoes.addDomino( Domino( 6,4 ) );
-	dominoes.addDomino( Domino( 6,3 ) );
-	dominoes.addDomino( Domino( 6,2 ) );
-	dominoes.addDomino( Domino( 6,1 ) );
-	dominoes.addDomino( Domino( 6,0 ) );
-	dominoes.addDomino( Domino( 5,5 ) );
-	dominoes.addDomino( Domino( 5,4 ) );
-	dominoes.addDomino( Domino( 5,3 ) );
-	dominoes.addDomino( Domino( 5,2 ) );
-	dominoes.addDomino( Domino( 5,1 ) );
-	dominoes.addDomino( Domino( 5,0 ) );
-	dominoes.addDomino( Domino( 4,4 ) );
-	dominoes.addDomino( Domino( 4,3 ) );
-	dominoes.addDomino( Domino( 4,2 ) );
-	dominoes.addDomino( Domino( 4,1 ) );
-	dominoes.addDomino( Domino( 4,0 ) );
-	dominoes.addDomino( Domino( 3,3 ) );
-	dominoes.addDomino( Domino( 3,2 ) );
-	dominoes.addDomino( Domino( 3,1 ) );
-	dominoes.addDomino( Domino( 3,0 ) );
-	dominoes.addDomino( Domino( 2,2 ) );
-	dominoes.addDomino( Domino( 2,1 ) );
-	dominoes.addDomino( Domino( 2,0 ) );
-	dominoes.addDomino( Domino( 1,1 ) );
-	dominoes.addDomino( Domino( 1,0 ) );
-	dominoes.addDomino( Domino( 0,0 ) );
-
+	// generate a double-six domino set
+	for( int i = 6; i > -1; --i )
+    {
+        for( int j = i; j > -1; --j )
+        {
+            dominoes.addDomino( Domino( i, j) );
+        }
+    }
+	
 	lastshuffle = dominoes;
 
     std::cout << "WARNING: Test may fail if the same shuffle occurs twice" << std::endl;

@@ -14,14 +14,21 @@ void Texas42Set::drawHands( int firstDraw )
  */
 void Texas42Set::resolveSet( void )
 {
-    // Determine the winners for this game and assign marks
     int marks = 1;
+
+	// This will need to change so as to consider bids 2/3/4 marks etc.
     if( winningBid.getBid() > 42 ) marks++;
 
+	/** 
+	 *  If the seat of the winning bidder did not make their bid, increment 
+	 *  the seat of the game winner by 1 so the opposing team will be assigned
+	 *  winning marks
+	 */
     if( teamCount[winningBidder % 2] < winningBid.getBid() ) winningBidder += 1;
     table->addMarks( (winningBidder % 2), marks );    
     table->addMarks( (winningBidder % 2) + 2, marks ); 
 
+	  
     table->setNextPlayer( winningBidder );
     Player *team = table->nextPlayer();
     std::cout << *team << (marks > 0 ? " made " : " missed ") << "their bid!" << std::endl;
