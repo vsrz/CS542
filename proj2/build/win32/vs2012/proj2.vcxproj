@@ -117,6 +117,7 @@
     <ClInclude Include="..\..\..\proj2\PlayerTests.h" />
     <ClInclude Include="..\..\..\proj2\RandomNumberGenerator.h" />
     <ClInclude Include="..\..\..\proj2\RandomNumberGeneratorTests.h" />
+    <ClInclude Include="..\..\..\proj2\Team.h" />
     <ClInclude Include="..\..\..\proj2\Tests.h" />
     <ClInclude Include="..\..\..\proj2\Texas42Game.h" />
     <ClInclude Include="..\..\..\proj2\Texas42GameTests.h" />
@@ -139,6 +140,7 @@
     <ClCompile Include="..\..\..\proj2\PlayerTests.cpp" />
     <ClCompile Include="..\..\..\proj2\RandomNumberGenerator.cpp" />
     <ClCompile Include="..\..\..\proj2\RandomNumberGeneratorTests.cpp" />
+    <ClCompile Include="..\..\..\proj2\Team.cpp" />
     <ClCompile Include="..\..\..\proj2\Tests.cpp" />
     <ClCompile Include="..\..\..\proj2\Texas42Game.cpp" />
     <ClCompile Include="..\..\..\proj2\Texas42GameTests.cpp" />

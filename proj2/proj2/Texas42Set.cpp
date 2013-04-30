@@ -1,14 +1,15 @@
 #include "Texas42Set.h"
 
-void Texas42Set::drawHands( int firstDraw )
+void Texas42Set::drawHands( Player *firstDraw )
 {
-    table->setNextPlayer( firstDraw );
-    for( int i = 0; i < 4; ++i )
-    {
-        table->nextPlayer()->drawDominoes( dominoSet );
-    }
+    players->setNextPlayer( firstDraw );
+	do
+	{
+		players->getNextPlayer()->drawDominoes( dominoSet );
+    } while( players->nextPlayer() != firstDraw );
 
 }
+
 /**
  * Determines the set winner and awards marks to the winning team
  */
@@ -24,36 +25,28 @@ void Texas42Set::resolveSet( void )
 	 *  the seat of the game winner by 1 so the opposing team will be assigned
 	 *  winning marks
 	 */
-    if( teamCount[winningBidder % 2] < winningBid.getBid() ) winningBidder += 1;
-    table->addMarks( (winningBidder % 2), marks );    
-    table->addMarks( (winningBidder % 2) + 2, marks ); 
-
 	  
-    table->setNextPlayer( winningBidder );
-    Player *team = table->nextPlayer();
-    std::cout << *team << (marks > 0 ? " made " : " missed ") << "their bid!" << std::endl;
     
-    std::cout << "Team 1: " << table->getMarks( 0 ) << " Team 2: " << table->getMarks( 1 ) << std::endl << std::endl;
-
 }
 
 /**
  *  Play a trick and return the index of the player that won the trick
  * starting with the lead Player.
  */
-int Texas42Set::playTrick( Trick *trick, int leadPlayerIndex )
+Player* Texas42Set::playTrick( Trick *trick, Player *lead)
 {    
 
-    table->setNextPlayer( leadPlayerIndex );
+    players->setNextPlayer( lead );
 
     // Have each player play a domino
     for( int i = 0; i < 4; ++i )
     {
-        trick->addDomino( table->nextPlayer()->playDomino( winningBid, *trick ) );
+        trick->addDomino( players->nextPlayer()->playDomino( winningBid, *trick ) );
     }
     
     // Set the winner of the trick as the first player for the next trick
-    return( trick->getWinner() );
+    //return( trick->getWinner() );
+	return NULL;
 }
 
 /**
@@ -65,27 +58,17 @@ int Texas42Set::solicitBids( void )
     int highBidder;
 
     // Set the opening bidder 
-    table->setNextPlayer( firstBid );
+    players->setNextPlayer( openingBidder );
 
     // Go around the table and get the bids
-    for( int seat = 0; seat < 4; ++seat )
-    {
-        Bid b;
-        Player *bidder = table->nextPlayer();
-        b = bidder->makeBid( highBid );
+	/*do
+	{
 
-        // If the bid is higher than the current high bid, set the high bidder and bid
-        if( b > highBid ) 
-        {
-            highBidder = (seat + firstBid) % 4;        
-            highBid = b;
-        }
-    }
-
+	} while( players->nextPlayer() != openingBidder );
+    */
     // Set the high bid and player as the first to act
-    table->setNextPlayer( highBidder );
-    winningBid = highBid;
-    return highBidder;
+    //return highBidder;
+	return 0;
 }
 
 /**
@@ -110,30 +93,31 @@ void Texas42Set::giveCount( int lead, Trick trick )
 void Texas42Set::play( void )
 {
     // Draw hands
-    drawHands( firstBid + 1 );
+    drawHands( openingBidder );
 
     // Get the bids and set the winning bid as the starting player
     int lead = solicitBids();
     
     // Set the winning bidder for this set
-    winningBidder = lead + 1;
+    //winningBidder = lead + 1;
 
     // Play each trick
+	/*
     for( int turn = 0; turn < 7; ++turn )
     {
         lead = playTrick( &tricks[turn], lead );
         std::cout << tricks[turn] << std::endl;
-        table->setNextPlayer( lead );
-        Player *winner = table->nextPlayer();
+        players->setNextPlayer( lead );
+        Player *winner = players->nextPlayer();
         std::cout << *winner << " wins the trick!" << std::endl;
         // Assign the points for the trick
         giveCount( lead, tricks[turn] );
         
     }
-
+	*/
     resolveSet();
     //std::cout << 9
-    //Player *winner = table->nextPlayer();
+    //Player *winner = players->nextPlayer();
 
     
 

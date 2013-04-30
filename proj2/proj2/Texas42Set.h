@@ -11,12 +11,12 @@
 class Texas42Set
 {
 private:
-    PlayerCollection *table;
+    PlayerCollection *players;
     DominoCollection dominoSet;
     Trick tricks[7];
 
-    int firstBid;
-    int winningBidder;
+    Player *openingBidder;
+    Player *winningBidder;
 
     Bid winningBid;
     
@@ -24,12 +24,12 @@ private:
     
     
 public:
-    Texas42Set( PlayerCollection *t, DominoCollection d, int openingBidder ) : 
-        table( t ), dominoSet( d ), firstBid( openingBidder )  { teamCount[0] = 0; teamCount[1] = 0; } 
+    Texas42Set( PlayerCollection *players, DominoCollection dominoSet, Player *openingBidder ) : 
+        players( players ), dominoSet( dominoSet ), openingBidder( openingBidder )  {  } 
     ~Texas42Set(void) { teamCount[0] = 0; teamCount[1] = 0; }
 
-    void drawHands( int firstDraw );
-    int playTrick( Trick *trick, int leadPlayerIndex );
+    void drawHands( Player *firstDraw );
+    Player* playTrick( Trick *trick, Player *lead );
     int solicitBids( void );
     void resolveSet( void );
     void setWinningBid( Bid bid );

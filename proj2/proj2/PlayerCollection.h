@@ -9,31 +9,25 @@
 class PlayerCollection
 {
 private:
-    std::vector<Player*> players;
-    
     int turn;
-    int marks[2];
-    
+
+protected:
+    std::vector<Player*> players;
+    int indexOf( Player *player );
 
 public:
     PlayerCollection(void);
     ~PlayerCollection(void);
 
-    void addPlayer( Player *p );
+    void addPlayer( Player *player );
     Player* nextPlayer( void );
-    void setNextPlayer( int playerIndex );
+	Player* getNextPlayer( void );
+    void setNextPlayer( Player *player );
 
-    int playerCount( void );
-    bool contains( int seat );
-
-    int getTeam( int seat );
-    int getMarks( int seat );
-    void addMarks( int seat, int marks = 1 );
+	int playerCount( void );
+    bool contains( Player *player );
 
     Player* operator [] ( const int index );
-
-
-
 };
 
 #endif

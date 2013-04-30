@@ -4,14 +4,30 @@
 
 PlayerCollection::PlayerCollection(void)
 {
-    turn = -1;
-    marks[0] = 0;
-    marks[1] = 0;
+    turn = 0;
 }
 
 
 PlayerCollection::~PlayerCollection(void)
 {
+}
+
+/**
+ *	Returns an integer representing the position that the player
+ * is found in the vector.
+ */
+int PlayerCollection::indexOf( Player *player )
+{
+    int i = -1;
+    for( std::vector<Player*>::iterator it = players.begin();
+         it != players.end();
+         ++it )
+     {
+         ++i;
+         if( *it == player ) return i;
+     }
+
+     return -1;
 }
 
 /**
@@ -28,22 +44,35 @@ void PlayerCollection::addPlayer( Player *p )
 }
 
 /**
- * Returns a pointer to the player that is next up. Only call this once
- * per turn.
+ * Returns a pointer to the player that is next up. This does not actually
+ * increment the player iterator
  */
 Player* PlayerCollection::nextPlayer( void )
 {
-    turn++;
-    if( (size_t) turn > players.size() - 1 ) turn = 0;
-    return players[turn];
+	// Loops back to the first player when overflowed
+	if( turn > players.size() )
+	{
+		turn = 1;
+	}
+    return players[turn - 1];
 }
+
+/**
+ * Returns the player and advances the turn
+ */
+Player* PlayerCollection::getNextPlayer( void )
+{
+	turn++;
+	return nextPlayer();
+}
+
 
 /**
  *  Sets the player who will be returned when nextPlayer() is called
  */
-void PlayerCollection::setNextPlayer( int playerIndex )
+void PlayerCollection::setNextPlayer( Player *player )
 {
-    turn = playerIndex - 1;
+    turn = indexOf( player );
 }
 
 int PlayerCollection::playerCount( void )
@@ -54,42 +83,10 @@ int PlayerCollection::playerCount( void )
 /**
  * Returns true if there's a player in the seat
  */
- bool PlayerCollection::contains( int seat )
+ bool PlayerCollection::contains( Player *player )
  {
-     return (size_t) seat <= players.size() - 1;
+     return indexOf( player ) >= 0;
  }
-
-/**
- * Get the team ID that the player in a seat belongs to
- */
-int PlayerCollection::getTeam( int seat )
-{
-    switch( seat )
-    {
-        case 0:
-        case 2:
-            return 0;
-            break;
-        case 1:
-        case 3:
-            return 1;
-            break;
-    }
-    return -1;
-}
-
-/**
- * returns the number of marks for a player (and their partner)
- */
-int PlayerCollection::getMarks( int seat )
-{
-    return marks[ getTeam( seat ) ];
-}
-
-void PlayerCollection::addMarks( int seat, int marksGiven )
-{
-    marks[ getTeam( seat ) ] += marksGiven;
-}
 
 /**
  * Returns the address to a player in the collection

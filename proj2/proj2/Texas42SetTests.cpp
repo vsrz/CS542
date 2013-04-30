@@ -6,7 +6,7 @@
 
 void Texas42SetTests::RunAllTests( void )
 {
-    PlayTrick();
+    //PlayTrick();
 
 }
 
@@ -45,7 +45,7 @@ void Texas42SetTests::PlayTrick( void )
     }
     std::cout << " Ok." << std::endl;
     
-
+	/*
     int winner = 0;
     for( int i = 0; i < 7; i++ ) 
     {
@@ -58,5 +58,5 @@ void Texas42SetTests::PlayTrick( void )
 
     endTest();
 
-
+	*/
 }

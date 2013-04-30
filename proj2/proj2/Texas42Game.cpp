@@ -7,21 +7,21 @@
 void Texas42Game::begin( void )
 {    
     // Enter set loop
-    while( table.getMarks( table.getTeam( 0 ) ) < 7  && table.getMarks( table.getTeam( 1 ) ) < 7 )
+    //while( 1 )
     {
         // Shuffle the dominoes
         dominoSet.shuffle();
         // continue to play sets until one team makes their mark
-        Texas42Set set( &table, dominoSet, firstBidder++ % 4 );
-        set.play();
+//        Texas42Set set( &table, dominoSet, firstBidder++ % 4 );
+//        set.play();
 
     }
 
-    if( table.getMarks( 0 ) >= 7 ) 
+    //if( table.getMarks( 0 ) >= 7 ) 
     {
         std::cout << *table[0] << " and " << *table[2];
     }
-    else
+    //else
     {
         std::cout << *table[1] << " and " << *table[3];
     }
