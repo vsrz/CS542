@@ -40,7 +40,9 @@ void PlayerCollection::addPlayer( Player *p )
     if( players.size() < 4 )
     {
         players.push_back( p );
+		
     }
+	
 }
 
 /**

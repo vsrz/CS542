@@ -6,11 +6,12 @@
 #define TEAM_H
 
 #pragma once
-#include "PlayerCollection.h"
+#include "Player.h"
 
-class Team : public PlayerCollection
+class Team
 {
 private:
+	Player player[2];
 	int marks;
 
 public:
@@ -19,7 +20,7 @@ public:
 
 	int getMarks( void );
 	void addMarks( int marks = 0 );
-
+	void addPlayer( Player* player );
 	bool isMember( Player* player );
 
 };

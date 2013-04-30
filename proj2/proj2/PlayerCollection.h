@@ -3,6 +3,7 @@
 #define PLAYERCOLLECTION_H
 
 #include "PlayerAI.h"
+#include "Team.h"
 #include <vector>
 
 #pragma once
@@ -10,6 +11,8 @@ class PlayerCollection
 {
 private:
     int turn;
+	int playerCount;
+	Team team[2];
 
 protected:
     std::vector<Player*> players;
