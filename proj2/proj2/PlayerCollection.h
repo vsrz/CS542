@@ -24,6 +24,7 @@ public:
     void addPlayer( Player *player );
     Player* nextPlayer( void );
 	Player* getNextPlayer( void );
+	Player* getCurrentPlayer( void );
     void setNextPlayer( Player *player );
 
 	int playerCount( void );

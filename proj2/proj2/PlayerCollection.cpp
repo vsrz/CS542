@@ -68,6 +68,19 @@ Player* PlayerCollection::getNextPlayer( void )
 	return nextPlayer();
 }
 
+/**
+ * Returns the player that just played a turn
+ */
+Player* PlayerCollection::getCurrentPlayer( void )
+{
+	if( turn - 1 < 0 )
+	{
+		return players[players.size()];
+	}
+
+	return players[turn - 1];
+}
+
 
 /**
  *  Sets the player who will be returned when nextPlayer() is called

@@ -6,41 +6,59 @@
 #include "Team.h"
 
 
-void Texas42SetTests::RunAllTests( void )
+Texas42SetTests::Texas42SetTests( void )
 {
-    //PlayTrick();
+	name = "Texas 42 Set Tests";
 
-}
-
-void Texas42SetTests::PlayTrick( void )
-{
-    name = "Play a mock trick";
-    DominoCollection doubleSixSet;
-    doubleSixSet.generateDoubleSixSet();
-
-    PlayerAI p1( "Player 1", 0 );
-    PlayerAI p2( "Player 2", 1 );
-    PlayerAI p3( "Player 3", 2 );
-    PlayerAI p4( "Player 4", 3 );
+    p1.setName( "Player 1" );
+    p2.setName( "Player 2" );
+    p3.setName( "Player 3" );
+	p4.setName( "Player 4" );
 
 	Team team1;
 	Team team2;
 
-
-    std::cout << "Add players to the game";
-    PlayerCollection players;
     players.addPlayer( &p1 );
     players.addPlayer( &p2 );
     players.addPlayer( &p3 );
     players.addPlayer( &p4 );
-    std::cout << " Ok." << std::endl;
 
-	std::cout << "Add players to teams.";
 	team1.addPlayer( &p1 );
 	team1.addPlayer( &p3 );
 	team2.addPlayer( &p2 );
 	team2.addPlayer( &p4 );
 
+	doubleSixSet.generateDoubleSixSet();
+}
+
+void Texas42SetTests::RunAllTests( void )
+{
+    //PlayTrick();
+	GetBids();
+}
+
+void Texas42SetTests::GetBids( void )
+{
+	name = "Get bids from players";
+	beginTest();
+
+	DominoCollection doubleSix;
+	doubleSix.generateDoubleSixSet();
+	
+	// solicit bid test
+	std::cout << "Solicit bids from all players.";
+	Texas42Set set( &players, doubleSixSet, &p1, &team1, &team2);
+	Player *winner = set.solicitBids();
+	assert( winner == &p1 );
+	std::cout << " Ok." << std::endl;
+
+	endTest();
+	
+}
+
+void Texas42SetTests::PlayTrick( void )
+{
+    name = "Play a mock trick";
 	
 	std::cout << "Set the winning bid";
     Bid b( 30, 6 );

@@ -24,6 +24,7 @@ protected:
 public:
 	Player( void ) : name( "Unnamed Player" ), seat( 0 ) {}
 	Player( std::string n, int s ) : name( n ), seat( s ) {}
+	Player( std::string n ) : name( n ) {}
 	~Player( void ) {}
 
 	virtual Bid makeBid( Bid b ) = 0;

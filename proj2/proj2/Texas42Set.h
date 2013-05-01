@@ -19,7 +19,7 @@ private:
     Player *openingBidder;
     Player *winningBidder;
 
-    Bid winningBid;
+    Bid highBid;
     Team *team1, *team2;
     
 public:
@@ -29,7 +29,7 @@ public:
 
     void drawHands( Player *firstDraw );
     Player* playTrick( Trick *trick, Player *lead );
-    int solicitBids( void );
+    Player* solicitBids( void );
     void resolveSet( void );
     void setWinningBid( Bid bid );
     void giveCount( int lead, Trick trick );
