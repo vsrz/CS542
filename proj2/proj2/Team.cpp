@@ -3,7 +3,9 @@
 
 Team::Team(void)
 {
-	marks = 0;
+    player[0] = NULL;
+    player[1] = NULL;
+    marks = 0;
 }
 
 
@@ -24,5 +26,16 @@ int Team::getMarks( void )
 // Returns true if the given player is a member of this team
 bool Team::isMember( Player *player )
 {
-	return PlayerCollection::contains( player );
+	return player == this->player[0] || player == this->player[1];
+}
+
+void Team::addPlayer( Player* player )
+{
+    if( this->player[0] == NULL ) player[0] = player;
+    this->player[1] = player;
+}
+
+void Team::removePlayer( int playerIndex )
+{
+    player[playerIndex] = NULL;
 }

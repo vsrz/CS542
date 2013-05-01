@@ -11,7 +11,6 @@ class PlayerCollection
 {
 private:
     int turn;
-	int playerCount;
 	Team team[2];
 
 protected:

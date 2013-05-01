@@ -1,5 +1,6 @@
 /**
- *	Extends a player collection to hold marks and members of a team
+ *	Extends a player collection to hold marks, dominoes won,
+ *  and members of a team
  */
 
 #ifndef TEAM_H
@@ -7,21 +8,25 @@
 
 #pragma once
 #include "Player.h"
+#include "DominoCollection.h"
 
 class Team
 {
 private:
-	Player player[2];
+	Player *player[2];
 	int marks;
 
 public:
-	Team(void);
+    DominoCollection dominoes;
+	
+    Team(void);
 	~Team(void);
 
 	int getMarks( void );
 	void addMarks( int marks = 0 );
 	void addPlayer( Player* player );
 	bool isMember( Player* player );
+    void removePlayer( int playerIndex );
 
 };
 

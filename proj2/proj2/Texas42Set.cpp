@@ -35,18 +35,20 @@ void Texas42Set::resolveSet( void )
  */
 Player* Texas42Set::playTrick( Trick *trick, Player *lead)
 {    
-
+    int winner = 0;
     players->setNextPlayer( lead );
 
     // Have each player play a domino
-    for( int i = 0; i < 4; ++i )
+    do
     {
-        trick->addDomino( players->nextPlayer()->playDomino( winningBid, *trick ) );
-    }
+        trick->addDomino( players->getNextPlayer()->playDomino( winningBid, *trick ) );
+    } while( lead != players->nextPlayer() );
     
     // Set the winner of the trick as the first player for the next trick
-    //return( trick->getWinner() );
-	return NULL;
+    winner = trick->getWinner();
+
+
+    return NULL;
 }
 
 /**
@@ -84,7 +86,6 @@ void Texas42Set::setWinningBid( Bid bid )
  */
 void Texas42Set::giveCount( int lead, Trick trick )
 {
-    teamCount[lead % 2] += trick.getValue();
 }
 
 /**
