@@ -57,17 +57,16 @@ Player* Texas42Set::playTrick( Trick *trick, Player *lead)
 int Texas42Set::solicitBids( void )
 {           
     Bid highBid;
-    int highBidder;
 
     // Set the opening bidder 
     players->setNextPlayer( openingBidder );
 
     // Go around the table and get the bids
-	/*do
+	do
 	{
+		highBid = players->getNextPlayer()->makeBid( highBid );
 
 	} while( players->nextPlayer() != openingBidder );
-    */
     // Set the high bid and player as the first to act
     //return highBidder;
 	return 0;

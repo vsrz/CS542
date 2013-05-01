@@ -3,6 +3,8 @@
 #include "DominoCollection.h"
 #include "PlayerCollection.h"
 #include "Trick.h"
+#include "Team.h"
+
 
 void Texas42SetTests::RunAllTests( void )
 {
@@ -21,6 +23,10 @@ void Texas42SetTests::PlayTrick( void )
     PlayerAI p3( "Player 3", 2 );
     PlayerAI p4( "Player 4", 3 );
 
+	Team team1;
+	Team team2;
+
+
     std::cout << "Add players to the game";
     PlayerCollection players;
     players.addPlayer( &p1 );
@@ -29,11 +35,18 @@ void Texas42SetTests::PlayTrick( void )
     players.addPlayer( &p4 );
     std::cout << " Ok." << std::endl;
 
-    std::cout << "Set the winning bid";
+	std::cout << "Add players to teams.";
+	team1.addPlayer( &p1 );
+	team1.addPlayer( &p3 );
+	team2.addPlayer( &p2 );
+	team2.addPlayer( &p4 );
+
+	
+	std::cout << "Set the winning bid";
     Bid b( 30, 6 );
     std::cout << " Trump: " << b.getTrump() << " Ok." << std::endl;
     
-    Texas42Set set( &players, doubleSixSet, 0 );
+    Texas42Set set( &players, doubleSixSet, &p1, &team1, &team2 );
     set.setWinningBid( b );
     
     Trick trick[7];    

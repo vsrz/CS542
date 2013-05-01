@@ -31,7 +31,7 @@ bool Team::isMember( Player *player )
 
 void Team::addPlayer( Player* player )
 {
-    if( this->player[0] == NULL ) player[0] = player;
+    if( this->player[0] == NULL ) this->player[0] = player;
     this->player[1] = player;
 }
 

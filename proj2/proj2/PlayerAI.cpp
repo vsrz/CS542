@@ -3,8 +3,8 @@
 Bid PlayerAI::makeBid( Bid b ) {
 	
     // Just return a bid for now
-    return( Bid( 30, 0 ) );
-
+    //return Bid( 30, 0, (Player*) this);
+	return Bid();
 }
 
 

@@ -52,7 +52,7 @@ void PlayerCollection::addPlayer( Player *p )
 Player* PlayerCollection::nextPlayer( void )
 {
 	// Loops back to the first player when overflowed
-	if( turn > players.size() )
+	if( (size_t) turn > players.size() )
 	{
 		turn = 1;
 	}

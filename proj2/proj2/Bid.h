@@ -13,8 +13,8 @@ private:
     int trump;
 
 public:
-    Bid( void ) : bid( 0 ), trump( 0 ) {} 
-    Bid( int b, int t) : bid( b ), trump( t ) {}
+	Bid( void ) : bid( 0 ), trump( 0 ) {}
+	Bid( int bid, int trump ) : bid( bid ), trump( trump ) {} 
     
     void setBid( int bid );
     void setTrump( int trump );

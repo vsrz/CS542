@@ -17,14 +17,13 @@ private:
 	std::string name;
     Player *partner;
     int seat;
-	Bid bid;    
 
 protected:
 	DominoCollection hand;
 
 public:
 	Player( void ) : name( "Unnamed Player" ), seat( 0 ) {}
-	Player( std::string n, int s ) : name( n ), seat( s ) {};
+	Player( std::string n, int s ) : name( n ), seat( s ) {}
 	~Player( void ) {}
 
 	virtual Bid makeBid( Bid b ) = 0;

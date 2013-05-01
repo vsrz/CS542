@@ -1,5 +1,4 @@
 
-
 #include "Bid.h"
 
 
@@ -19,7 +18,6 @@ int Bid::getTrump( void )
     return trump;
 }
     
-
 bool Bid::operator > ( Bid b )
 {
     return bid > b.bid;

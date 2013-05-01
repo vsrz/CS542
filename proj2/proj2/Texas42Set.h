@@ -20,10 +20,10 @@ private:
     Player *winningBidder;
 
     Bid winningBid;
-    Team team1, team2;
+    Team *team1, *team2;
     
 public:
-    Texas42Set( PlayerCollection *players, DominoCollection dominoSet, Player *openingBidder, Team team1, Team team2 ) : 
+    Texas42Set( PlayerCollection *players, DominoCollection dominoSet, Player *openingBidder, Team *team1, Team *team2 ) : 
         players( players ), dominoSet( dominoSet ), openingBidder( openingBidder ), team1( team1 ), team2( team2 )  {  } 
     ~Texas42Set(void) {  }
 
