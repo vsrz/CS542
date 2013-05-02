@@ -33,6 +33,7 @@ public:
     void resolveSet( void );
     void setWinningBid( Bid bid );
     void giveTrick( Player *winner, Trick trick );
+	Bid getBid( void );
 
     void play( void );
 };

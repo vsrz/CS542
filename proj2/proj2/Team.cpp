@@ -31,8 +31,14 @@ bool Team::contains( Player *player )
 
 void Team::addPlayer( Player* player )
 {
-    if( this->player[0] == NULL ) this->player[0] = player;
-    this->player[1] = player;
+    if( this->player[0] == NULL ) 
+	{
+		this->player[0] = player;
+	}
+	else
+	{
+	    this->player[1] = player;
+	}
 }
 
 void Team::removePlayer( int playerIndex )

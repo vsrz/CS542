@@ -19,7 +19,7 @@ void DominoCollection::addDomino( Domino d ) {
  */
 void DominoCollection::addDominoes( DominoCollection source )
 {
-    for( int i = source.size(); i > 0; ++i )
+    for( int i = source.size(); i > 0; --i )
     {
         dominoes.push_back( source.drawDomino() );
     }

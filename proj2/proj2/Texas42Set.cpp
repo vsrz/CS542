@@ -17,8 +17,11 @@ void Texas42Set::resolveSet( void )
 {
     int marks = 1;
 
-	// This will need to change so as to consider bids 2/3/4 marks etc.
-    if( highBid.getBid() > 42 ) marks++;
+    // If the bid is higher than 42, 84 = 2 marks, 126 = 3 marks, 168 = 4 marks
+	if( highBid.getBid() > 42 ) 
+	{
+		marks = highBid.getBid() / 42;
+	}
 
 	/** 
 	 *  If the seat of the winning bidder did not make their bid, increment 
@@ -124,6 +127,14 @@ void Texas42Set::giveTrick( Player *winner, Trick trick )
     }
 }
 
+/** 
+ * returns the bid for this set
+ */
+Bid Texas42Set::getBid( void )
+{
+	return highBid;
+}
+
 /**
  * Play this set and give marks to the winning team
  */
@@ -138,6 +149,7 @@ void Texas42Set::play( void )
     // Play each trick
     for( int turn = 0; turn < 7; ++turn )
     {
+		tricks[turn].setTrump( highBid.getTrump() );
         lead = playTrick( &tricks[turn], lead );
         
         // Give the trick to the winning team

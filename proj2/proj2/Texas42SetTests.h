@@ -28,6 +28,7 @@ public:
     void PlayTrick( void );
 	void GetBids( void );
     void TrickWinnerTests( void );
+	void RunSet( void );
     
 
 };
