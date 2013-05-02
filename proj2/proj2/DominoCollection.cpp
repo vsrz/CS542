@@ -37,6 +37,23 @@ Domino DominoCollection::removeDomino( void )
 }
 
 /**
+ * Returns the number of dominoes in this collection that are 
+ * of the given suit.
+ */
+int DominoCollection::containsSuit( int suit )
+{
+    int count = 0;
+    if( dominoes.size() == 0 ) return -1;
+    for( std::vector<Domino>::iterator it = dominoes.begin();
+        it != dominoes.end();
+        ++it )
+    {
+        if( it->getRightPip() == suit || it->getLeftPip() == suit ) count++;
+    }
+    return count;
+}
+
+/**
  * Removes and returns a random domino from the stack
  */	
 Domino DominoCollection::drawDomino( void )

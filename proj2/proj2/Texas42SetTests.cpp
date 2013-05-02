@@ -57,16 +57,15 @@ void Texas42SetTests::RunSet( void )
 	std::cout << "Solicit bids from players.";
 	Player *winningBidder = set.solicitBids();
 	Player *lead = winningBidder;
-	assert( lead == &p1 );
 	std::cout << " Ok." << std::endl;
 
 	if( team1.contains( winningBidder ) )
 	{
-		std::cout << *winningBidder << " on Team 1 has won the bid. ";
+		std::cout << *winningBidder << " on Team 1 has won the bid for " << set.getBid() << ". ";
 	}
 	else
 	{
-		std::cout << *winningBidder << " on Team 2 has won the bid. ";
+		std::cout << *winningBidder << " on Team 2 has won the for " << set.getBid() << ". ";
 	}
 	std::cout << "Trump is " << set.getBid().getTrump() << std::endl;
 	

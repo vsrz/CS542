@@ -119,3 +119,23 @@ void Trick::emptyTrick( void )
 {
     dominoes.clear();
 }
+
+/**
+ * Return the suit of the trick
+ */
+int Trick::getSuit( void )
+{
+    
+    // If the lead domino is trump return trump, otherwise return high pip
+    if( dominoes.size() > 0 && bid.getTrump() >= 0 )
+    {
+        if( dominoes[0].isSuit( bid.getTrump() ) )
+        {
+            return bid.getTrump();
+        }
+        return dominoes[0].getHighPip();
+    }
+
+    // No dominoes have been played in this trick
+    return -1;
+}

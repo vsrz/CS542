@@ -35,7 +35,8 @@ public:
     int size( void );
 	int getSize( void );
     int countDominoes( const Domino d );
-	bool contains( const Domino d );	
+	bool contains( const Domino d );
+    int containsSuit( int suit );
     int getTotalScore( void );
 
 	DominoCollection & operator = ( const DominoCollection dc );

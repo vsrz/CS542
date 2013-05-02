@@ -6,7 +6,6 @@
 #include "PlayerCollection.h"
 #include "DominoCollection.h"
 #include "Domino.h"
-#include "Player.h"
 
 class Trick : public DominoCollection
 {
@@ -27,7 +26,7 @@ public:
 
     void emptyTrick( void );
     Trick & operator = ( const Trick trick );
-    
+    int getSuit( void );
     
 };
 
