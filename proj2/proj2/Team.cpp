@@ -24,7 +24,7 @@ int Team::getMarks( void )
 }
 
 // Returns true if the given player is a member of this team
-bool Team::isMember( Player *player )
+bool Team::contains( Player *player )
 {
 	return player == this->player[0] || player == this->player[1];
 }

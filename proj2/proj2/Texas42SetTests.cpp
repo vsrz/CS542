@@ -31,10 +31,71 @@ Texas42SetTests::Texas42SetTests( void )
 	doubleSixSet.generateDoubleSixSet();
 }
 
+void Texas42SetTests::TrickWinnerTests( void )
+{
+    name = "Trick winner tests";
+    beginTest();
+	Player *winner;
+
+    Texas42Set set( &players, doubleSixSet, &p1, &team1, &team2);
+    Trick trick( 3 );
+
+
+    p1.hand.addDomino( Domino( 6, 6 ) );
+    p2.hand.addDomino( Domino( 6, 4 ) );
+    p3.hand.addDomino( Domino( 1, 4 ) );
+    p4.hand.addDomino( Domino( 4, 4 ) );
+
+    std::cout << "Play a trick, player 1 should win.";
+    winner = set.playTrick( &trick, &p1 );
+    assert( winner == &p1 );
+    std::cout << " Ok." << std::endl;
+    
+    // via trump
+    trick.emptyTrick();
+    p1.hand.addDomino( Domino( 6, 6 ) );
+    p2.hand.addDomino( Domino( 6, 4 ) );
+    p3.hand.addDomino( Domino( 1, 4 ) );
+    p4.hand.addDomino( Domino( 3, 4 ) );
+
+    std::cout << "Play a trick, player 4 should win.";
+    winner = set.playTrick( &trick, &p1 );
+    assert( winner == &p4 );
+    std::cout << " Ok." << std::endl;
+    
+    // via catch a trick
+    trick.emptyTrick();
+    p1.hand.addDomino( Domino( 6, 5 ) );
+    p2.hand.addDomino( Domino( 6, 6 ) );
+    p3.hand.addDomino( Domino( 1, 4 ) );
+    p4.hand.addDomino( Domino( 4, 4 ) );
+
+    std::cout << "Play a trick, player 2 should win.";
+    winner = set.playTrick( &trick, &p1 );
+    assert( winner == &p2 );
+    std::cout << " Ok." << std::endl;
+    
+    // via high domino
+    trick.emptyTrick();
+    p1.hand.addDomino( Domino( 3, 5 ) );
+    p2.hand.addDomino( Domino( 3, 3 ) );
+    p3.hand.addDomino( Domino( 1, 4 ) );
+    p4.hand.addDomino( Domino( 4, 4 ) );
+
+    std::cout << "Play a trick, player 2 should win.";
+    winner = set.playTrick( &trick, &p4 );
+    assert( winner == &p2 );
+    std::cout << " Ok." << std::endl;
+    
+
+    endTest();
+
+    
+}
 void Texas42SetTests::RunAllTests( void )
 {
-    //PlayTrick();
 	GetBids();
+    TrickWinnerTests();
 }
 
 void Texas42SetTests::GetBids( void )

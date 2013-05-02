@@ -18,11 +18,11 @@ private:
     Player *partner;
     int seat;
 
-protected:
-	DominoCollection hand;
 
 public:
-	Player( void ) : name( "Unnamed Player" ), seat( 0 ) {}
+	DominoCollection hand;
+
+    Player( void ) : name( "Unnamed Player" ), seat( 0 ) {}
 	Player( std::string n, int s ) : name( n ), seat( s ) {}
 	Player( std::string n ) : name( n ) {}
 	~Player( void ) {}

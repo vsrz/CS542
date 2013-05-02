@@ -25,6 +25,7 @@ public:
     void setTrump( int t );
     int getValue( void );
 
+    void emptyTrick( void );
     Trick & operator = ( const Trick trick );
     
     

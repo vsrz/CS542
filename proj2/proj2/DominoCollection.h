@@ -27,7 +27,8 @@ public:
 	Domino getDomino( Domino d );
 
 	void addDomino( Domino d );
-	void shuffle( void );
+	void addDominoes( DominoCollection dominoes );
+    void shuffle( void );
 	bool isEmpty( void );
 	void print( std::ostream & out );
 
@@ -35,6 +36,7 @@ public:
 	int getSize( void );
     int countDominoes( const Domino d );
 	bool contains( const Domino d );	
+    int getTotalScore( void );
 
 	DominoCollection & operator = ( const DominoCollection dc );
 	bool operator == ( const DominoCollection dc ) const;

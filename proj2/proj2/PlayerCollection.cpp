@@ -4,7 +4,7 @@
 
 PlayerCollection::PlayerCollection(void)
 {
-    turn = 0;
+    turn = -1;
 }
 
 
@@ -51,12 +51,8 @@ void PlayerCollection::addPlayer( Player *p )
  */
 Player* PlayerCollection::nextPlayer( void )
 {
-	// Loops back to the first player when overflowed
-	if( (size_t) turn > players.size() )
-	{
-		turn = 1;
-	}
-    return players[turn - 1];
+    if( turn == -1 || turn + 1 == players.size() ) return players[0];
+    return players[turn + 1];
 }
 
 /**
@@ -65,7 +61,11 @@ Player* PlayerCollection::nextPlayer( void )
 Player* PlayerCollection::getNextPlayer( void )
 {
 	turn++;
-	return nextPlayer();
+    if( turn == players.size() )
+    {
+        turn = 0;
+    }
+	return players[turn];
 }
 
 /**
@@ -73,12 +73,8 @@ Player* PlayerCollection::getNextPlayer( void )
  */
 Player* PlayerCollection::getCurrentPlayer( void )
 {
-	if( turn - 1 < 0 )
-	{
-		return players[players.size()];
-	}
-
-	return players[turn - 1];
+	if( turn == - 1 ) return players[players.size() - 1];
+    return players[turn];
 }
 
 
@@ -87,7 +83,7 @@ Player* PlayerCollection::getCurrentPlayer( void )
  */
 void PlayerCollection::setNextPlayer( Player *player )
 {
-    turn = indexOf( player );
+    turn = indexOf( player ) - 1;
 }
 
 int PlayerCollection::playerCount( void )

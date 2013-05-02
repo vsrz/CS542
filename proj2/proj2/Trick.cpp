@@ -112,3 +112,10 @@ Trick & Trick::operator = ( const Trick trick )
     return *this;
 }
 
+/**
+ * empties the dominos from the trick
+ */
+void Trick::emptyTrick( void )
+{
+    dominoes.clear();
+}

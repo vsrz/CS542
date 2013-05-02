@@ -27,6 +27,8 @@ public:
     void RunAllTests( void );
     void PlayTrick( void );
 	void GetBids( void );
+    void TrickWinnerTests( void );
+    
 
 };
 

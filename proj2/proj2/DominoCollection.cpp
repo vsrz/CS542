@@ -15,6 +15,18 @@ void DominoCollection::addDomino( Domino d ) {
 }
 
 /**
+ * Removes the dominoes from source one by one and adds them to this collection
+ */
+void DominoCollection::addDominoes( DominoCollection source )
+{
+    for( int i = source.size(); i > 0; ++i )
+    {
+        dominoes.push_back( source.drawDomino() );
+    }
+}
+
+
+/**
  * Removes and returns the next domino on the stack of dominoes.
  */
 Domino DominoCollection::removeDomino( void )
@@ -114,6 +126,29 @@ int DominoCollection::countDominoes( const Domino d )
 
 	return count;
 }
+
+/**
+ * Returns the score (total count) provided by the dominoes in this collection
+ */
+int DominoCollection::getTotalScore( void )
+{
+    int count = 0;
+
+    // one point for each trick taken
+    count += dominoes.size() / 4;
+
+    // ten counters
+    if( countDominoes( Domino( 5, 5 ) ) > 0 ) count += 10;
+    if( countDominoes( Domino( 4, 6 ) ) > 0 ) count += 10;
+
+    // five counters
+    if( countDominoes( Domino( 0, 5 ) ) > 0 ) count += 5;
+    if( countDominoes( Domino( 1, 4 ) ) > 0 ) count += 5;
+    if( countDominoes( Domino( 2, 3 ) ) > 0 ) count += 5;
+
+    return count;
+}
+
 
 /**
  * Returns true if the domino exists somewhere in the collection

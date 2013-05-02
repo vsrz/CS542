@@ -9,6 +9,8 @@ void Texas42GameTests::RunAllTests()
 
 void Texas42GameTests::RunAIGame()
 {
+    name = "Game test";
+    beginTest();
     DominoCollection dominoSet;
     dominoSet.generateDoubleSixSet();
 
@@ -32,4 +34,5 @@ void Texas42GameTests::RunAIGame()
     Texas42Game game( dominoSet, players );
 
     game.begin();
+    endTest();
 }

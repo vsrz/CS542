@@ -25,8 +25,28 @@ void Texas42Set::resolveSet( void )
 	 *  the seat of the game winner by 1 so the opposing team will be assigned
 	 *  winning marks
 	 */
-	  
-    
+    if( team1->contains( winningBidder ) )
+    {
+        if( team1->dominoes.getTotalScore() >= highBid.getBid() )
+        {
+            team1->addMarks( marks );
+        }
+        else
+        {
+            team2->addMarks( marks );
+        }
+    }
+    else
+    {
+        if( team2->dominoes.getTotalScore() >= highBid.getBid() )
+        {
+            team2->addMarks( marks );
+        }
+        else
+        {
+            team1->addMarks( marks );
+        }
+    }
 }
 
 /**
@@ -47,9 +67,15 @@ Player* Texas42Set::playTrick( Trick *trick, Player *lead)
     
     // Set the winner of the trick as the first player for the next trick
     winner = trick->getWinner();
+    if( winner < 1 ) return lead;
+    
+    // adjust the trick winner relative to the lead player
+    do
+    {
+        players->getNextPlayer();
+    } while( winner-- != 0 );
 
-
-    return NULL;
+    return players->getCurrentPlayer();
 }
 
 /**
@@ -84,10 +110,18 @@ void Texas42Set::setWinningBid( Bid bid )
 }
 
 /**
- * Gives the count provided by the trick to the winning team
+ * Gives the trick to the winning team
  */
-void Texas42Set::giveCount( int lead, Trick trick )
+void Texas42Set::giveTrick( Player *winner, Trick trick )
 {
+    if( team1->contains( winner ) ) 
+    {
+        team1->dominoes.addDominoes( trick );
+    }
+    else
+    {
+        team2->dominoes.addDominoes( trick );
+    }
 }
 
 /**
@@ -101,27 +135,15 @@ void Texas42Set::play( void )
     // Get the bids and set the winning bid as the starting player
     Player* lead = solicitBids();
     
-    // Set the winning bidder for this set
-    //winningBidder = lead + 1;
-
     // Play each trick
-	/*
     for( int turn = 0; turn < 7; ++turn )
     {
         lead = playTrick( &tricks[turn], lead );
-        std::cout << tricks[turn] << std::endl;
-        players->setNextPlayer( lead );
-        Player *winner = players->nextPlayer();
-        std::cout << *winner << " wins the trick!" << std::endl;
-        // Assign the points for the trick
-        giveCount( lead, tricks[turn] );
+        
+        // Give the trick to the winning team
+        giveTrick( lead, tricks[turn] );
         
     }
-	*/
     resolveSet();
-    //std::cout << 9
-    //Player *winner = players->nextPlayer();
-
-    
 
 }

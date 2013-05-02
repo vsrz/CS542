@@ -32,7 +32,7 @@ public:
     Player* solicitBids( void );
     void resolveSet( void );
     void setWinningBid( Bid bid );
-    void giveCount( int lead, Trick trick );
+    void giveTrick( Player *winner, Trick trick );
 
     void play( void );
 };

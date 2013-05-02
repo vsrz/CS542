@@ -42,8 +42,6 @@ void Player::drawDominoes( DominoCollection & set )
 std::ostream & operator << ( std::ostream & out, Player &p )
 {
     p.printName( out );
-    //out << std::endl;
-    //p.printHand( out );
     return out;
 }
 

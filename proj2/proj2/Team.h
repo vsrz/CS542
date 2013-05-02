@@ -25,7 +25,7 @@ public:
 	int getMarks( void );
 	void addMarks( int marks = 0 );
 	void addPlayer( Player* player );
-	bool isMember( Player* player );
+	bool contains( Player* player );
     void removePlayer( int playerIndex );
 
 };
