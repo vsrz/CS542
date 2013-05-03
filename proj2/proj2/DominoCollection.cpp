@@ -59,7 +59,7 @@ int DominoCollection::containsSuit( int suit )
 Domino DominoCollection::drawDomino( void )
 {
 	RandomNumberGenerator r;
-	int index = r.nextNumber( dominoes.size() - 1);
+	int index = r.nextNumber( (int) dominoes.size() - 1);
 	Domino d( dominoes[index] );
 	dominoes.erase( dominoes.begin() + index );
 	
@@ -121,12 +121,12 @@ void DominoCollection::print( std::ostream & o )
 
 int DominoCollection::size( void )
 {
-    return dominoes.size();
+    return (int) dominoes.size();
 }
 
 int DominoCollection::getSize( void )
 {
-	return dominoes.size();
+	return (int) dominoes.size();
 }
 
 /**

@@ -8,7 +8,7 @@
 RandomNumberGenerator::RandomNumberGenerator( void )
 {
 	seed = (unsigned long) time( NULL );
-	srand( seed );
+	srand( (unsigned int) seed );
 }
 
 /**

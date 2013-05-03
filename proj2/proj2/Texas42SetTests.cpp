@@ -275,7 +275,7 @@ void Texas42SetTests::PlayTrick( void )
     Texas42Set set( &players, doubleSixSet, &p1, &team1, &team2 );
     set.setWinningBid( b );
     
-    Trick trick[7];    
+//    Trick trick[7];    
     
     std::cout << "Draw hands for the players";
     for( int i = 0; i < 4; ++i )

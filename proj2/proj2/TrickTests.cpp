@@ -1,5 +1,4 @@
 
-
 #include "TrickTests.h"
 #include "PlayerAI.h"
 #include "Domino.h"
@@ -16,7 +15,7 @@ void TrickTests::TrickCount( void )
     name = "Trick value tests";
     beginTest();
     
-    PlayerAI ai[4];
+
     Domino fiveFive( 5,5 );
     Domino fiveSix( 5,6 );
     Domino oneOne( 1,1 );
@@ -30,7 +29,10 @@ void TrickTests::TrickCount( void )
 
     for( int i = 0; i < 4; ++i )
     {
-        a[i].setName( "Player " + i );
+        std::string s("Player ");
+        char pn = 49 + i ;
+        s += pn;
+        a[i].setName( s );
     }
 
     trick.addDomino( fiveFive );
@@ -80,7 +82,10 @@ void TrickTests::TrickWinner( void )
     PlayerAI a[4];
     for( int i = 0; i < 4; ++i )
     {
-        a[i].setName( "Player " + i );
+        std::string s("Player ");
+        char pn = 49 + i ;
+        s += pn;
+        a[i].setName( s );
     }
 
     int trump = 5;

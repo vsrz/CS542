@@ -88,7 +88,7 @@ void PlayerCollection::setNextPlayer( Player *player )
 
 int PlayerCollection::playerCount( void )
 {
-    return players.size();
+    return (int) players.size();
 }
 
 /**
