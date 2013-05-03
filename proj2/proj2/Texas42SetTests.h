@@ -16,7 +16,7 @@ protected:
 
 	Team team1;
 	Team team2;
-
+    
 	DominoCollection doubleSixSet;
     PlayerCollection players;
 

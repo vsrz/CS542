@@ -18,6 +18,12 @@ void Texas42SetTests::RunAllTests( void )
 	GetBids();
     TrickWinnerTests();
 	RunSet();
+    RunSet();
+    RunSet();
+    RunSet();
+    RunSet();
+    RunSet();
+    RunSet();
 }
 
 void Texas42SetTests::RunSet( void )
@@ -65,7 +71,7 @@ void Texas42SetTests::RunSet( void )
 	}
 	else
 	{
-		std::cout << *winningBidder << " on Team 2 has won the for " << set.getBid() << ". ";
+		std::cout << *winningBidder << " on Team 2 has won the bid for " << set.getBid() << ". ";
 	}
 	std::cout << "Trump is " << set.getBid().getTrump() << std::endl;
 	
