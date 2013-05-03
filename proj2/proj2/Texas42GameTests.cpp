@@ -36,3 +36,4 @@ void Texas42GameTests::RunAIGame()
     game.begin();
     endTest();
 }
+

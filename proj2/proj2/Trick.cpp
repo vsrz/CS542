@@ -139,3 +139,4 @@ int Trick::getSuit( void )
     // No dominoes have been played in this trick
     return -1;
 }
+

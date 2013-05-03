@@ -45,3 +45,4 @@ void Team::removePlayer( int playerIndex )
 {
     player[playerIndex] = NULL;
 }
+

@@ -58,3 +58,4 @@ int Player::getSeat( void )
 {
     return seat;
 }
+
